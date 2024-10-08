@@ -1,0 +1,807 @@
+<?php
+require 'php/config.php';
+
+$error = "";
+ $selected = 0;
+
+
+if(!isLoggedIn()){
+  header('location:login.php');
+}else{
+   
+
+  if(isset($_GET['sid']))  $selected = 1;
+    
+$student=$_GET['sid'];
+  if(isset($_POST['fullname'])){
+//$bformimage = addslashes(file_get_contents($_FILES['bformlogo']['tmp_name']));
+//$fcnicimage = addslashes(file_get_contents($_FILES['fcniclogo']['tmp_name']));
+//$sscimage = addslashes(file_get_contents($_FILES['ssclogo']['tmp_name']));
+ $id =$_POST['id'];
+
+    $fullname =$_POST['fullname'];
+    $gender = $_POST['gender'];
+$dob = $_POST['dob'];
+    $mobile = $_POST['mobile'];
+    $address = $_POST['address'];
+    $class = $_POST['class'];
+    $batch = $_POST['batch'];
+    $fathername = $_POST['fathername'];
+ $mothername = $_POST['mothername'];
+     $foccupation = $_POST['foccupation']; 
+ $bform = $_POST['bform'];
+ $fcnic = $_POST['fcnic'];
+$admissiondate = $_POST['admissiondate'];
+
+
+  $login ="student-$id";
+   
+    $password = $_POST['password'];
+
+
+$queryu = "UPDATE `student` SET `id`='$id',`fullname`='$fullname',`gender`='$gender',`dob`='$dob',`mobile`='$mobile',`address`='$address',`batch`='$batch',`class`='$class'
+,`bform`='$bform', `fname`='$fathername', `mname`='$mothername', `fcnic`='$fcnic', `admission_date`='$admissiondate',`foccupation`='$foccupation' WHERE `id`='$student'";
+    
+ $result = mysqli_query($link, $queryu);
+if($result==TRUE){
+ $error = "Updated Successfully";
+header("location:active_students.php?msg=Updated Successfully");
+exit();
+
+
+ }
+else {
+  $error = "Error While Updating...";
+header("location:active_students.php?msg=Error While Updating Documents...");
+}
+
+
+
+        } 
+    }
+  
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add new student!</title>
+    <?php include 'php/head.php.inc'; ?>
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <?php include 'php/sidebar.php.inc'; ?>
+        <?php include 'php/topnav.php.inc'; ?>
+
+<script type="text/javascript">
+var abc="<option value=''>- Select -</option>";
+$(document).ready(function()
+{
+
+$("#province").change(function()
+{
+
+$("#district").html(abc);
+var ids=$(this).val();
+var dataStrings = 'ids='+ ids;
+$.ajax
+({
+type: "POST",
+url: "js/jquery1.php",
+data: dataStrings,
+cache: false,
+success: function(html)
+{
+
+$("#district").html(html);
+}
+});
+
+var mval = $("#province").val();
+$("#district").val(mval);
+});
+});
+</script>
+
+<script>
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+$('#img_prev')
+.attr('src', e.target.result)
+.width(150);
+};
+
+reader.readAsDataURL(input.files[0]);
+}
+}
+
+$(function() {
+	$('#from_1').datepick();
+	$('#from_2').datepick();
+	$('#from_3').datepick();
+	$('#from_4').datepick();
+	$('#from_5').datepick();
+	$('#from_6').datepick();
+	$('#from_7').datepick();
+	$('#from_8').datepick();
+	$('#to_1').datepick();
+	$('#to_2').datepick();
+	$('#to_3').datepick();
+	$('#to_4').datepick();
+	$('#to_5').datepick();
+	$('#to_6').datepick();
+	$('#to_7').datepick();
+	$('#to_8').datepick();
+	$('#EnrolmentLower').datepick();
+	$('#EnrolmentHigh').datepick();
+	$('#EnrolmentPleader').datepick();
+	$('#BarMemDate').datepick();
+	$('#AcquiredBar').datepick();
+	$('#RegistrationDate').datepick();
+});
+
+
+function subChange(){
+		
+		if(document.getElementById('MA_Degree').value=='OTHER')
+		{
+		document.getElementById('div1').style.display='block';
+		document.getElementById('div2').style.display='none';
+		} else {
+		document.getElementById('div1').style.display='none';
+		document.getElementById('div2').style.display='block';
+		}
+}
+
+
+function subDis(){
+		
+		if(document.getElementById('disability').value=='YES')
+		{
+		document.getElementById('divd').style.display='block';
+		} else {
+		document.getElementById('divd').style.display='none';
+		}
+}
+
+function PleaderDis(){
+		
+		if(document.getElementById('TenYearPractice').value=='YES')
+		{
+		document.getElementById('divP').style.display='block';
+		} else {
+		document.getElementById('divP').style.display='none';
+		}
+}
+
+function subChannel(){
+		
+		if(document.getElementById('ProperChannel').value=='YES')
+		{
+		document.getElementById('channel').style.display='block';
+		} else {
+		document.getElementById('channel').style.display='none';
+		}
+}
+
+
+function subChangeo(){
+		
+		document.getElementById('div1').style.display='none';
+		document.getElementById('div2').style.display='block';
+
+}
+
+
+
+
+
+
+
+function subChange1(){
+		
+		if(document.getElementById('MED_Degree').value=='OTHER')
+		{
+		document.getElementById('div3').style.display='block';
+		document.getElementById('div4').style.display='none';
+		} else {
+		document.getElementById('div3').style.display='none';
+		document.getElementById('div4').style.display='block';
+		}
+}
+
+function subChangeo1(){
+		
+		document.getElementById('div3').style.display='none';
+		document.getElementById('div4').style.display='block';
+
+}
+
+
+
+	function cal_sscPercentage(){
+		
+		var ssc = "ssc";
+		var SSC_ObtMarks = Number($('#SSC_ObtMarks').val());
+		var t_marks = Number($('#SSC_MaxMarks').val());
+		if(t_marks !=""){
+			if(t_marks < SSC_ObtMarks)
+			{
+				alert('Obtiained marks must be less than total marks');
+				$('#SSC_ObtMarks').val('');
+				$('#SSC_MaxMarks').val('');
+				$('#SSC_MaxMarks').focus();
+				return false;
+			}
+		}
+	
+	} 
+	
+	function cal_hsscPercentage(){
+	
+		var hssc = "hssc";
+		var HSSC_ObtMarks = Number($("#HSSC_ObtMarks").val());
+		var t_marks = Number($("#HSSC_MaxMarks").val());	
+		if(t_marks !=""){
+			if(HSSC_ObtMarks > t_marks)
+			{
+				alert("Obtiained marks must be less than total marks");
+				$("#HSSC_ObtMarks").val('');
+				$("#HSSC_MaxMarks").val('');
+				$("#HSSC_MaxMarks").focus();
+				return false;
+			}
+		}
+
+	}
+	
+	function cal_baPercentage(){
+	
+		var ba = "ba";
+		var BA_ObtMarks = Number($("#BA_ObtMarks").val());
+		var t_marks = Number($("#BA_MaxMarks").val());	
+		if(t_marks !=""){
+			if(BA_ObtMarks > t_marks)
+			{
+				alert("Obtiained marks must be less than total marks");
+				$("#BA_ObtMarks").val('');
+				$("#BA_MaxMarks").val('');
+				$("#BA_MaxMarks").focus();
+				return false;
+			}
+		}
+
+	}
+	
+	function cal_maPercentage(){
+	
+		var ma = "ma";
+		var MA_ObtMarks = Number($("#MA_ObtMarks").val());
+		var t_marks = Number($("#MA_MaxMarks").val());	
+		if(t_marks !=""){
+			if(MA_ObtMarks > t_marks)
+			{
+				alert("Obtiained marks must be less than total marks");
+				$("#MA_ObtMarks").val('');
+				$("#MA_MaxMarks").val('');
+				$("#MA_MaxMarks").focus();
+				return false;
+			}
+		}
+
+	}
+	
+	function cal_mpPercentage(){
+	
+		var mp = "mp";
+		var MP_ObtMarks = Number($("#MP_ObtMarks").val());
+		var t_marks = Number($("#MP_MaxMarks").val());	
+		if(t_marks !=""){
+			if(MP_ObtMarks > t_marks)
+			{
+				alert("Obtiained marks must be less than total marks");
+				$("#MP_ObtMarks").val('');
+				$("#MP_MaxMarks").val('');
+				$("#MP_MaxMarks").focus();
+				return false;
+			}
+		}
+
+	}
+
+
+</script>
+
+
+        
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Academia</h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>New Student<?php
+                  echo '    -    '.$error; 
+                  ?></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+<?php  
+
+
+ if($selected == 1){
+                  $id=$_GET['sid'];
+   $query = "SELECT * FROM `student` WHERE `id`='$id'";
+                    $result = mysqli_query($link, $query);
+                    $row = mysqli_fetch_array($result);
+                     $id =$row['id'];
+                    $fullname =$row['fullname'];
+$dob = $row['dob'];
+$gender = $row['gender'];
+                    $mobile = $row['mobile'];
+                    $address = $row['address'];
+$class = $row['class'];
+$batch = $row['batch'];
+    
+               $fathername = $row['fname'];
+                    $fcnic = $row['fcnic'];
+$admissiondate = $row['admission_date'];
+$bform = $row['bform'];
+$mothername = $row['mname'];
+ $foccupation = $row['foccupation'];                  
+
+
+ ?>
+                    <!-- start form for validation -->
+                    <form id="demo-form" data-parsley-validate action="" method="post" enctype="multipart/form-data">
+ <br>
+	<h1 class="headbg" style=" border-bottom:2;">Student Details :</h1>
+            
+  <div class="clearfix"></div>
+   <div class="col-md-6 col-xs-6">
+             
+                       <label for="fullname">Admission # * :</label>
+                      <input type="text" id="fullname" value="<?php echo $id; ?>" class="form-control" name="id"  required /> <br/>
+</div>
+ <div class="col-md-6 col-xs-6">
+             
+                       <label for="fullname">Full Name * :</label>
+                      <input type="text" id="fullname" class="form-control" name="fullname" value="<?php echo $fullname; ?>"  required /> <br/>
+</div>
+
+<div class="col-md-6 col-xs-6">
+                      <label>Gender *:</label>
+                     
+<p>
+                        M:
+
+                        <input type="radio" class="flat" name="gender" id="genderM" value="M" <?php if($gender=="M"){ echo "checked"; } ?> required /> 
+F:
+                        <input type="radio" class="flat" name="gender" id="genderF" value="F" <?php if($gender=="F"){ echo "checked"; } ?> />
+                      </p>
+
+
+   
+</div>
+<div class="col-md-6 col-xs-6">
+<label for="mobile">B-Form No. * :</label>
+                      <input type="text" id="mobile" class="form-control"  name="bform" value="<?php echo $bform; ?>" data-parsley-trigger="change" > <br/>
+</div>
+<div class="col-md-6 col-xs-6">
+ <label for="city">Date of birth * :</label>
+                       <input type="text" id="dob" class="form-control" name="dob" data-parsley-trigger="change" required  value="<?php echo $dob; ?>" /><br/>
+
+</div>
+<div class="col-md-6 col-xs-6">
+<label for="mobile">Mobile No. * :</label>
+                    <input type="text" id="cityofbirth" class="form-control" name="mobile" data-parsley-trigger="change" required  value="<?php echo $mobile; ?>" /><br/>
+</div>
+
+                <div class="col-md-6 col-xs-6">     
+                      <label for="address">Address * :</label>
+                      <input type="text" id="address" class="form-control" name="address" data-parsley-trigger="change" required  value="<?php echo $address; ?>" /><br/>
+</div>
+<div class="col-md-6 col-xs-6">
+  <label for="class">Class * :</label>
+<select id="class" class="form-control" name="class" style="width:100%;" >
+ <option value="<?php echo $class; ?>"><?php echo $class; ?> </option>
+
+ <option value="" disabled >Select Class </option>
+<?php
+
+ $query1 = "SELECT DISTINCT class FROM `subject` ORDER BY class ASC";
+                        $result1 = mysqli_query($link, $query1);
+                        
+while($row1 = mysqli_fetch_array($result1))
+                        {
+
+$class= $row1['class'];
+?>
+   
+                    
+                        <option value="<?php echo $class?>"><?php echo $class?></option>
+                     <?php }?>  
+                      </select><br/>
+                    
+</div>
+         <div class="col-md-6 col-xs-6">             
+       <label for="fathername">Session * :</label>                  
+ <input type="text" id="batch" value="<?php echo $batch;?>" class="form-control" name="batch"  required /> <br/>
+</div>
+<div class="col-md-6 col-xs-6">
+                      <label for="fathername">Father Name * :</label>
+                       <input type="text" id="fathername" class="form-control" name="fathername" required  value="<?php echo $fathername; ?>" /><br/>
+</div>
+<div class="col-md-6 col-xs-6">
+                      <label for="fathername">Mother/Guardian Name * :</label>
+                      <input type="text" id="fathername" class="form-control" value="<?php echo $mothername; ?>" name="mothername"  required /> <br/>
+</div>
+<div class="col-md-6 col-xs-6">
+                      <label for="mothername">Father/Guardian CNIC No. * :</label>
+                       <input type="text" id="mothername" class="form-control" name="fcnic" data-parsley-trigger="change" required  value="<?php echo $fcnic; ?>"  /><br/>
+</div>
+ <div class="col-md-6 col-xs-6">
+
+<label for="city">Date of Admission * :</label>
+                      <input type="text" id="login" class="form-control" name="admissiondate" required  value="<?php echo $admissiondate; ?>" /><br/>
+</div>
+
+<div class="col-md-6 col-xs-6">
+  <label for="mothername">Father/Guardian Occupation.* :</label>
+                      <input type="text" id="mothername" class="form-control" name="foccupation" value="<?php echo $foccupation; ?>" data-parsley-trigger="change" required /> <br/>
+   </div>
+
+	<!-- h1 class="headbg" style="font-size:24; border-bottom:2;">Upload Documents </h1>
+            
+<div class="col-md-6 col-xs-6">
+                      <label for="image">Upload Your Picture * :</label>
+                      <input type="file" id="image" class="form-control btn btn-primary" name="image"  required /> <br/>
+</div-->
+<!--div class="col-md-6 col-xs-6">
+                      <label for="image">Upload B Form * :</label>
+                      <input type="file" id="image" class="form-control btn btn-primary" name="bformlogo"  required /> <br/>
+</div>
+<div class="col-md-6 col-xs-6">
+                      <label for="image">Upload Father CNIC front side * :</label>
+                      <input type="file" id="image" class="form-control btn btn-primary" name="fcniclogo"  required /> <br/>
+</div>
+    </div-->                 
+                      <input type="hidden" id="password" value="123" class="form-control" name="password"   required /> <br/>
+                      
+
+
+
+ <!--div style="float:left; width:; margin-left:0px; float:left;">
+           
+			<h1 class="headbg" style=" border-bottom:2;">Previous Academic Record </h1>
+            
+<div style="float:left; color:#FF0000; font-size:14px;"> 
+
+
+ </div>           
+
+<table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+              <tr bgcolor="#CCCCCC" style="font-size:12px;">
+                <td width="18%"><div align="center"><strong>Certificate / Degree Level</strong></div></td>
+                <td width="20%"><div align="center"><strong>Degree Name</strong></div></td>
+                
+                <td width="10%"><div align="center"><strong>Year Passing</strong></div></td>
+                <td width="12%"><div align="center"><strong>Total Marks/GPA</strong></div></td>
+                <td width="12%"><div align="center"><strong>Obtained<br />
+                  Marks/GPA</strong></div></td>
+                <td width="27%"><div align="center"><strong>University / Board</strong></div></td>
+<td width="20%"><div align="center"><strong>Upload Document Picture</strong></div></td>
+              </tr>
+              
+         
+         
+         <tr>
+                <td align="center"><strong>SSC/O-Level</strong>&nbsp;<br /> 
+                  <span class="small">(10 Years)</span>                  </td>
+                  <td align="center">
+       
+                <select name="SSC_Degree" id="SSC_Degree" style="width:150px;">
+                   <option value="">--- Please Select ---</option>
+                
+                     <option value="MATRIC(SCIENCE)" >MATRIC(SCIENCE)</option>
+                     <option value="MATRIC(ARTS)" >MATRIC(ARTS)</option>
+                     <option value="O-LEVEL" >O-LEVEL</option>
+                    </select>                                  </td>
+            
+                <td align="center">
+                
+                 <select name="SSC_PassYear" type="text" id="SSC_PassYear">
+                          <option value="">-Select-</option>
+ <?php $y=date('Y');
+$count='0';
+while($count < 50){
+$year=$y - $count; ?>
+ <option value="<?php echo $year; ?>"  ><?php echo $year; ?></option>
+<?php  $count++;
+}
+ ?>            
+      													
+                                                   </select>
+                
+                
+                <br />
+ <span style="color:#FF0000; font-size:11px;">
+                        </span>  </td>
+                <td align="center"> <input name="SSC_MaxMarks" type="text" id="SSC_MaxMarks" onChange="cal_sscPercentage();" size="2" maxlength="5" value="">
+                  <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                  </span>
+                  
+                  
+                  <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+           </span></td>
+                <td align="center"><input name="SSC_ObtMarks" type="text" id="SSC_ObtMarks" onChange="cal_sscPercentage();" size="2" maxlength="5"  value="">
+                  <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                      </span> <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                          </span></td>
+                <td align="center"> 
+                <input name="SSC_Inst_Name" type="text" id="SSC_Inst_Name" style="width:120px;" value="" maxlength="100"/>              </td>
+    <td align="center">
+                
+                <input type="file"  style="width:220px;" id="image" class="form-control btn btn-primary" name="ssclogo"  required />               </td>
+              </tr>
+              <tr>
+                <td align="center"><strong>HSSC/A-Level</strong>&nbsp; <br />
+                  <span class="small"> (12 or 13 Years)</span>                  </td>
+                  <td align="center">
+                
+              
+                
+                  <select name="HSSC_Degree" id="HSSC_Degree" style="width:150px;">
+                   <option value="">--- Please Select ---</option>
+                
+                      <option value="F.SC(PRE-MEDICAL)" >F.SC(PRE-MEDICAL)</option>
+                      
+                      <option value="F.SC(PRE-ENGINEERING)" >F.SC(PRE-ENGINEERING)</option>
+                      
+                       <option value="ICS" >ICS</option>
+                        <option value="F.A" >F.A</option>
+                        <option value="I.COM" >I.COM</option>
+                         <option value="D.COM" >D.COM</option>
+             
+                      <option value="A-LEVEL" >A-LEVEL</option>
+                       <option value="DAE" >DAE</option
+                       
+                       
+                      
+                    ></select>              </td>
+              
+                <td align="center">
+                
+                 <select name="HSSC_PassYear" type="text" id="HSSC_PassYear">
+                          <option value="">-Select-</option>
+                           								
+                  <?php $y=date('Y');
+$count='0';
+while($count < 50){
+$year=$y - $count; ?>
+ <option value="<?php echo $year; ?>"  ><?php echo $year; ?></option>
+<?php  $count++;
+}
+ ?>                                </select>
+                
+                <br />
+ <span style="color:#FF0000; font-size:11px;">
+                        </span> </td>
+                <td align="center"><input name="HSSC_MaxMarks" type="text" id="HSSC_MaxMarks" onChange="cal_hsscPercentage();" size="2" maxlength="5" value="">
+                    <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                      </span> <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                          </span></td>
+                <td align="center"><input name="HSSC_ObtMarks" type="text" id="HSSC_ObtMarks" onChange="cal_hsscPercentage();" size="2" maxlength="5"  value="">
+                  <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                      </span> <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                          </span></td>
+                <td align="center">
+                  
+                 <input name="HSSC_Inst_Name" type="text" id="HSSC_Inst_Name" style="width:120px;" value="" maxlength="100"/>                </td>
+  <td align="center">
+                
+               <input type="file" style="width:220px;" id="image" class="form-control btn btn-primary" name="hssclogo"   />           </td>
+              </tr>
+              
+              
+
+              <tr>
+                <td align="center"><strong>Bachelor</strong>&nbsp; <br />
+                  <span class="small"> (14 Years)</span>                  </td>
+                  <td align="center">
+                
+    
+                  
+                  
+                   <select name="BA_Degree" id="BA_Degree" style="width:150px;">
+                   <option value="">--- Please Select ---</option>
+                
+                     <option value="BA" >BA</option>
+                     <option value="B.COM" >B.COM</option>
+                     <option value="B.SC" >B.SC</option>
+                      <option value="BCS" >BCS</option>
+                    </select>                </td>
+              
+                <td align="center"> <select name="BA_PassYear" type="text" id="BA_PassYear">
+                          <option value="">-Select-</option>
+                   <?php $y=date('Y');
+$count='0';
+while($count < 50){
+$year=$y - $count; ?>
+ <option value="<?php echo $year; ?>"  ><?php echo $year; ?></option>
+<?php  $count++;
+}
+ ?>                                 
+                        </select><br />
+ <span style="color:#FF0000; font-size:11px;">
+                        </span> </td>
+                <td align="center"><input name="BA_MaxMarks" type="text" id="BA_MaxMarks" onChange="cal_baPercentage();" size="2" maxlength="5" value="">
+                    <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                      </span> <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                          </span></td>
+                <td align="center"><input name="BA_ObtMarks" type="text" id="BA_ObtMarks" onChange="cal_baPercentage();" size="2" maxlength="5"  value="">
+                  <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                      </span> <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                          </span></td>
+                <td align="center">
+                
+                  <input name="BA_Inst_Name" type="text" id="BA_Inst_Name" style="width:120px;" value="" maxlength="100"/>               </td>
+  <td align="center">
+                
+                 <input type="file" style="width:220px;" id="image" class="form-control btn btn-primary" name="balogo"   />             </td>
+              </tr>
+              <tr>
+                <td align="center"><strong>Bachelor/Master</strong>&nbsp; <br />
+                  <span class="small"> (16 Years)</span>                 </td>
+                 <td align="center">
+                
+               <div id="div2" style="display:block;">
+                   
+                 <select name="MA_Degree"  id="MA_Degree" style="width:150px;" onChange="subChange();">
+                   
+                    <option value="">--- Please Select ---</option>
+                           
+                       
+                    
+                     <option value="BS(ENGLISH)" >BS(ENGLISH)</option>
+                          
+                          <option value="MA(ENGLISH)" >MA(ENGLISH)</option>
+                          
+                          <option value="BS(URDU)" >BS(URDU)</option>
+                          
+                          <option value="MA(URDU)" >MA(URDU)</option>
+                          
+                          <option value="BS(ARABIC)" >BS(ARABIC)</option>
+                          
+                          <option value="MA(ARABIC)" >MA(ARABIC)</option>
+                          
+                           
+                           
+                            <option value="BS(MATHEMATICS)" >BS(MATHEMATICS)</option>
+                          
+                          <option value="MSC(MATHEMATICS)" >MSC(MATHEMATICS)</option>
+                          
+                           <option value="BS(BIOLOGY)" >BS(BIOLOGY)</option>
+                          
+                          <option value="MSC(BIOLOGY)" >MSC(BIOLOGY)</option>
+                          
+                          
+                         
+                         <option value="BS(SOCIAL STUDIES)" >BS(SOCIAL STUDIES)</option>
+                          
+                          <option value="MSC(SOCIAL STUDIES)" >MSC(SOCIAL STUDIES)</option>
+                          
+                       
+                          
+                           <option value="BS(CHEMISTRY)" >BS(CHEMISTRY)</option>
+                          
+                          <option value="MSC(CHEMISTRY)" >MSC(CHEMISTRY)</option>
+                          
+                    
+                          
+                           <option value="BS(BOTANY)" >BS(BOTANY)</option>
+                          
+                          <option value="MSC(BOTANY)" >MSC(BOTANY)</option>
+                          
+                          <option value="BS(ZOOLOGY)" >BS(ZOOLOGY)</option>
+                          
+                          <option value="MSC(ZOOLOGY)" >MSC(ZOOLOGY)</option>
+                          
+                        
+                          
+                          
+                            <option value="BS(CS)" >BS(CS)</option>
+                        <option value="BS(IT)" >BS(IT)</option>
+                        <option value="BS(SE)" >BS(SE)</option>
+                        <option value="BS(CE)" >BS(CE)</option>
+                        <option value="MCS" >MCS</option>
+                        <option value="MIT" >MIT</option>
+                        <option value="MSC(IT)" >MSC(IT)</option>
+                          
+                       
+                    
+					<option value="OTHER" >OTHER</option>
+                  </select>
+                </div>
+                
+                
+                 
+                <div id="div1" style="display:none;">
+                      
+                        <input name="MA_Degree1" type="text" id="MA_Degree1" style="width:150px;" value=""/><br />
+<a href="javascript:void();" onClick="subChangeo();">Other</a>                    </div>                </td>
+              
+                <td align="center">
+                
+                 <select name="MA_PassYear" type="text" id="MA_PassYear">
+                          <option value="">-Select-</option>
+                           								
+
+                       <?php $y=date('Y');
+$count='0';
+while($count < 50){
+$year=$y - $count; ?>
+ <option value="<?php echo $year; ?>"  ><?php echo $year; ?></option>
+<?php  $count++;
+}
+ ?>                                               </select>
+                
+               <br />
+ <span style="color:#FF0000; font-size:11px;">
+                        </span> </td> 
+                <td align="center"><input name="MA_MaxMarks" type="text" id="MA_MaxMarks" onChange="cal_maPercentage();" size="2" maxlength="5" value="">
+                    <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                      </span> <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                          </span></td>
+                <td align="center"><input name="MA_ObtMarks" type="text" id="MA_ObtMarks" onChange="cal_maPercentage();" size="2" maxlength="5"  value="">
+                  <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                      </span> <span style="font-size:11px; color:#FF0000; margin:0px; float:left;">
+                                          </span></td>
+                <td align="center">
+                  <input name="MA_Inst_Name" type="text" id="MA_Inst_Name" style="width:120px;" value="" maxlength="100"/>                </td>
+  <td align="center">
+                
+               <input type="file" style="width:220px;" id="image" class="form-control btn btn-primary" name="malogo"  />            </td>
+              </tr>
+              
+              
+              
+              
+              
+             
+            </table-->
+
+
+         <div class="col-md-2 col-xs-6">           
+<br> <br> <br> <br>
+                      <button type="submit" class="btn btn-primary">Update</button>
+</div>
+                    </form>
+
+<?php } ?>
+                    <!-- end form for validations -->
+
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+     <?php include 'php/footer.php.inc'; ?>
+  </body>
+</html>
