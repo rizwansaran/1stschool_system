@@ -26,7 +26,6 @@ if(!isLoggedIn()){
                         <div class="row">
                             <div class="col-md-3">
                                     <select id="class" class="form-control" name="class" style="width:100%;" >
-                                       
                                          <option value="all"><?php echo "All Classes";?></option>
                                             <?php
                                                 $query1 = "SELECT DISTINCT class FROM `student`ORDER BY class DESC ";
@@ -40,7 +39,7 @@ if(!isLoggedIn()){
                                 </div>
                             <div class="col-md-3">
                                     <select id="class" class="form-control" name="section" style="width:100%;" >
-                                         <option value="">--Not Select--</option>
+                                        <option value="">--Not Select--</option>
                                         <option value="M">Boys</option>
                                         <option value="F">Girls</option>
                                         <option value="M+F">Both</option>
@@ -138,6 +137,7 @@ if(!isLoggedIn()){
                          else{
                              $class1 = $get_class;
                          }
+                        
                         $section = $_POST['section'];
                         $monthyear = $_POST['monthyear'];
                         $dateParts = explode('-', $monthyear);
@@ -153,7 +153,7 @@ if(!isLoggedIn()){
                         else if($section=='F'){
                         $section1="Girls";
                         }
-                         else{
+                        else{
                               $section1="All Sections ";
                         }
                         // if($section=='M+F'){
@@ -167,7 +167,8 @@ if(!isLoggedIn()){
                         ?>
                        
                     <h3 style="color:Black; text-align:center; border: 0px solid black;"> <?php echo  $class1; ?> - <?php echo  $section1; ?></h3>
-                    <h2 style="color:Black; text-align:center; border: 0px solid black;" >Monthly Fee List</h2>  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" > 
+                    <h2 style="color:Black; text-align:center; border: 0px solid black;" >Pending Fee List</h2>
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" > 
                            <button style="float:right;" class="noprint btn btn-primary" onClick="window.print()"><i class="fa fa-print"> </i> Print</button> 
                         </div>
                     <table id="" class="table table-striped jambo_table bulk_action">
@@ -179,7 +180,6 @@ if(!isLoggedIn()){
                                 <th class="column-title" style="text-align:center; border: 1px solid black;">Father name </th>
                                 <th class="column-title" style="text-align:center; border: 1px solid black;">Class </th>
                                  <th class="column-title" style="text-align:center; border: 1px solid black;">Total Fee </th>
-                                <th class="column-title" style="text-align:center; border: 1px solid black;">Fee Paid </th>
                                 <th class="column-title" style="text-align:center; border: 1px solid black;">Balance</th>
                                 <th class="column-title" style="text-align:center; border: 1px solid black;">_____ </th>
                                 <th class="column-title" style="text-align:center; border: 1px solid black;">_____ </th>
@@ -191,19 +191,30 @@ if(!isLoggedIn()){
                         </thead>
                         <tbody>
                         <?php 
-                           $get_class = $_POST['class'];
+                            $get_class = $_POST['class'];
                             if($get_class == "all"){
-                                  $query = "SELECT * FROM `student` WHERE `status`='Active' ORDER BY `class` ASC";
+                                  $query = "SELECT * FROM `student` WHERE `status`='Active' AND NOT EXISTS (
+                                                                                                                SELECT 1
+                                                                                                                FROM fee
+                                                                                                                WHERE fee.studentid = student.id AND feemonth ='$_month' AND feeyear = '$_year'
+                                                                                                            ) ORDER BY `class` ASC";
                             }
                             else{
                             $section = $_POST['section'];
-                            if($section=='M+F'){
-                                $query = "SELECT * FROM `student` WHERE `class`='$class' AND `status`='Active'";
+                            if($section=='M+F' || $section==''){
+                                $query = "SELECT * FROM `student` WHERE `class`='$get_class' AND `status`='Active' AND NOT EXISTS (
+                                                                                                                SELECT 1
+                                                                                                                FROM fee
+                                                                                                                WHERE fee.studentid = student.id AND feemonth ='$_month' AND feeyear = '$_year'
+                                                                                                            )";
                             }
                             else {   
-                                $query = "SELECT * FROM `student` WHERE `class`='$class' AND `gender`='$section' AND `status`='Active'";
+                                $query = "SELECT * FROM `student` WHERE `class`='$get_class' AND `gender`='$section' AND `status`='Active'AND NOT EXISTS (
+                                                                                                                SELECT 1
+                                                                                                                FROM fee
+                                                                                                                WHERE fee.studentid = student.id AND feemonth ='$_month' AND feeyear = '$_year'
+                                                                                                            )";
                             }
-                                
                             }
                             $result = mysqli_query($link, $query);
                             $c=1;
@@ -247,21 +258,21 @@ if(!isLoggedIn()){
                                 ?>  
                           
                                 </td>
-                            <td class=" "style="text-align:center; border: 1px solid black;">
+                            
                                    <?php
-                                        // $fee = 0;
+                                        $fee = 0;
                                       
-                                        // $query2 = "SELECT SUM(amount) AS totalAmount FROM fee WHERE studentid = '$studentid' AND class = '$class' AND feemonth ='$_month' AND feeyear = '$_year'";
-                                        // $result2 = mysqli_query($link, $query2); 
-                                        // $row2 = mysqli_fetch_assoc($result2);
-                                        // $fee = $row2['totalAmount'];
+                                        $query2 = "SELECT SUM(amount) AS totalAmount FROM fee WHERE studentid = '$studentid' AND class = '$class' AND feemonth ='$_month' AND feeyear = '$_year'";
+                                        $result2 = mysqli_query($link, $query2); 
+                                        $row2 = mysqli_fetch_assoc($result2);
+                                        $fee = $row2['totalAmount'];
                                         // echo $fee;
                                     ?>
-                            </td>
+                          
                             <td class=" "style="text-align:center; border: 1px solid black;">
                                <?php
                                
-                                    // echo $total_fee - $fee;
+                                    echo $total_fee - $fee;
                                 ?>         
                            </td>
                           
