@@ -63,7 +63,7 @@ $class= $row1['class'];
 <div class="col-md-3"><div class="row">
 <h2> Select Section:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
  
-                        <select id="class" class="form-control" name="section" >
+                        <select id="section" class="form-control" name="section" >
                                              
  <option value="" selected disabled >Select Section </option>
 <?php
@@ -89,6 +89,8 @@ $section1="Both";
                         <option value="<?php echo $section?>"><?php echo $section1?></option>
                      <?php }?>         </select>
                   </div></div>
+                  <div class="col-md-1">
+                  </div>
                   <div class="col-md-2">
                     <div class="row">
 <h2 style="text-align:center;"> Action:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;"> 
@@ -106,7 +108,7 @@ $section = $_POST['section'];
                   <div class="col-md-3"><div class="row">
 <h2> Select the Class:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
  
-                        <select id="class" class="form-control" name="subject" >
+                        <select id="subject" class="form-control" name="subject" >
                                              
  <option value="" selected disabled >Select Subject</option>
 <?php

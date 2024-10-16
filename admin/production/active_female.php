@@ -9,39 +9,7 @@ if(!isLoggedIn()){
   <head>
     <title>All students!</title>
     <?php include 'php/head.php.inc'; ?>
-<script>
-function myFunction()
-{
-  // Declare variables
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    if (!tr[i].classList.contains('headings')) {
-      td = tr[i].getElementsByTagName("td"),
-      match = false;
-      for (j = 0; j < td.length; j++) {
-        if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-          match = true;
-          break;
-        }
-      }
-      if (!match) {
-        tr[i].style.display = "none";
-      } else {
-        tr[i].style.display = "";
-      }
-    }
-  }
-}
-
-
-
-</script>
   </head>
 
   <body class="nav-md">
@@ -140,9 +108,16 @@ $count=1;
  $m= $row['fcnic'];
                         $query2 = "SELECT * FROM `parent` WHERE `dad`='$f' AND `fcnic`= '$m' ";
                         $result2 = mysqli_query($link, $query2);
-                       $row2 = mysqli_fetch_array($result2);
+                        $rows = mysqli_num_rows($result2);
+                        if($rows > 0){
+                          $row2 = mysqli_fetch_array($result2);
+                          $parent_mobile = $row2['mobile'];
+                        }else{
+                          $parent_mobile = "";
+                        }
+                       
                         ?>                 
-<td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $row2['mobile']; ?></td>
+<td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $parent_mobile; ?></td>
  <td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $row['gender']; ?> </td>
 <td class=" " style="text-align:center; border: 1px solid #dddddd;"><?php  $dddate= $row['dob'];  echo date("d-m-Y", strtotime($dddate)); ?></td>
                             <td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $dat2= $row['admission_date']; /* echo date("d-m-Y", strtotime($dat2)); */?></td>

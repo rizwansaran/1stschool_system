@@ -109,7 +109,7 @@ $class= $row1['class'];
   </div>
                        <br/>
                         <div class="col-md-3">
-                          <button type="submit" name="submit" class="btn btn-primary form-control">Find</button>
+                          <button type="submit" name="submit" style="margin-top:7px;" class="btn btn-primary form-control">Find</button>
                         </div>
                       </div>
                     </form>

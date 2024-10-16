@@ -39,7 +39,7 @@ if(!isLoggedIn()){
                                     </select><br/><br/>
                                 </div>
                             <div class="col-md-3">
-                                    <select id="class" class="form-control" name="section" style="width:100%;" >
+                                    <select id="section" class="form-control" name="section" style="width:100%;" >
                                          <option value="">--Not Select--</option>
                                         <option value="M">Boys</option>
                                         <option value="F">Girls</option>
@@ -47,7 +47,7 @@ if(!isLoggedIn()){
                                     </select><br/><br/>
                                 </div>
                             <div class="col-md-3">
-                                <select id="class" class="form-control" name="monthyear" style="width:100%;" >
+                                <select id="monthyear" class="form-control" name="monthyear" style="width:100%;" >
                                 <?php 
                                     $query2 = "SELECT * FROM `financial_year`WHERE `status`='active' ";
                                         $result2 = mysqli_query($link, $query2);

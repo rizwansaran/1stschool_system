@@ -695,31 +695,27 @@ F:
                       <label for="address">Address * :</label>
                       <input type="text" id="address" class="form-control" name="address"  required /> <br/>
 </div>
+
+         
+<div class="col-md-6 col-xs-6">             
+       <label for="fathername">Session * :</label>                  
+ <input type="text" id="batch" value="<?php echo date("Y");?>-<?php $y=date("Y")+1; echo $y;?>" class="form-control" name="batch"  required /> <br/>
+</div>
 <div class="col-md-6 col-xs-6">
   <label for="class">Class * :</label>
 <select id="class" class="form-control" name="class" style="width:100%;" >
-
- <option value="">Select Class </option>
-<?php
-
- $query1 = "SELECT DISTINCT class FROM `subject` ORDER BY class ASC";
-                        $result1 = mysqli_query($link, $query1);
-                        
-while($row1 = mysqli_fetch_array($result1))
-                        {
-
-$class= $row1['class'];
-?>
-   
-                    
-                        <option value="<?php echo $class?>"><?php echo $class?></option>
-                     <?php }?>  
-                      </select><br/>
-                    
-</div>
-         <div class="col-md-6 col-xs-6">             
-       <label for="fathername">Session * :</label>                  
- <input type="text" id="batch" value="<?php echo date("Y");?>-<?php $y=date("Y")+1; echo $y;?>" class="form-control" name="batch"  required /> <br/>
+  <option value="">Select Class </option>
+  <?php
+  $query1 = "SELECT DISTINCT class FROM `subject` ORDER BY class ASC";
+  $result1 = mysqli_query($link, $query1);
+                          
+  while($row1 = mysqli_fetch_array($result1))
+  {
+  $class= $row1['class'];
+  ?>
+  <option value="<?php echo $class?>"><?php echo $class?></option>
+<?php } ?>  
+</select>                   
 </div>
 <div class="col-md-6 col-xs-6">
                       <label for="fathername">Father Name * :</label>

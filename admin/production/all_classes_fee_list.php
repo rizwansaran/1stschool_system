@@ -38,7 +38,7 @@ if(!isLoggedIn()){
                                 </div>
                             <div class="col-md-1"></div>
                             <div class="col-md-4">
-                                    <select id="class" class="form-control" name="section" style="width:100%;" >
+                                    <select id="section" class="form-control" name="section" style="width:100%;" >
                                         <option value="M">Boys</option>
                                         <option value="F">Girls</option>
                                         <option value="M+F">Both</option>

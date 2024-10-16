@@ -39,7 +39,7 @@ if(!isLoggedIn()){
                   <div class="col-md-3">
 <h2> Select the Class:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
  
-                        <select id="class" class="form-control" name="class" style="width:100%;" >
+                        <select id="classes" class="form-control" name="class" style="width:100%;" >
 
  <option value="">Select Class </option>
 <?php
@@ -62,7 +62,7 @@ $class= $row1['class'];
 <div class="col-md-3">
 <h2> Select Section:</h2><hr style="width:20%;margin-left:-1px;margin-top:-1px;">
 
-                  <select id="term" class="form-control" name="section" style="width:100%;" >
+                  <select id="section" class="form-control" name="section" style="width:100%;" >
 
                         <option value="M">Boys</option>
                         <option value="F">Girls</option>
@@ -71,7 +71,7 @@ $class= $row1['class'];
 
        <div class="col-md-3">
  <h2> Select the Subject:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                         <select id="class" class="form-control" name="subject" style="" >
+                         <select id="subject" class="form-control" name="subject" style="" >
    <option value="English">English </option>
                        
                          <option value="English B">English B</option>

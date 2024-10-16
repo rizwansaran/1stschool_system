@@ -79,7 +79,7 @@ $class= $row1['class'];
               
 
 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" >
-  <select id="class" class="form-control" name="period" style="width:100%;" >
+  <select id="period" class="form-control" name="period" style="width:100%;" >
 
  <option value="">Select Period </option>
 <?php

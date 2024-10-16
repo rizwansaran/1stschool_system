@@ -134,9 +134,16 @@ $c=1;
  $m= $row['fcnic'];
                         $query2 = "SELECT * FROM `parent` WHERE `dad`='$f' AND `fcnic`= '$m' ";
                         $result2 = mysqli_query($link, $query2);
-                       $row2 = mysqli_fetch_array($result2);
+                        $rows = mysqli_num_rows($result2);
+                        if($rows > 0){
+                          $row2 = mysqli_fetch_array($result2);
+                          $parent_mobile = $row2['mobile'];
+                        }else{
+                          $parent_mobile = "";
+                        }
+                       
                         ?>                 
-<td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $row2['mobile']; ?></td>
+<td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $parent_mobile; ?></td>
  <td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $row['gender']; ?> </td>
   <td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $row['address']; ?></td>
                             <td class=" "style="text-align:center; border: 1px solid #dddddd;"><?php echo $row['batch'] . ' - '.$row['class']; ?></td>

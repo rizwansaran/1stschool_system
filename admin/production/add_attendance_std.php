@@ -41,7 +41,7 @@ if(!isLoggedIn()){
                     <div class="row">
 
                    
-                  <div class="col-md-2 col-xs-12">
+                  <div class="col-md-3 col-xs-12">
                          <h2>Class:</h2>
                         <select id="class" class="form-control" name="class" style="width:100%;" >
 <?php
@@ -61,9 +61,9 @@ $class= $row1['class'];
  </div>
 
                   
- <div class="col-md-2 col-xs-12">
+ <div class="col-md-3 col-xs-12">
      <h2> Section:</h2>
-                        <select id="class" class="form-control" name="section" style="width:100%;" >
+                        <select id="section" class="form-control" name="section" style="width:100%;" >
 
                         <option value="M">Boys</option>
                       <option value="F">Girls</option>
@@ -71,13 +71,14 @@ $class= $row1['class'];
                       </select><br/>
  </div>
                    
- <div class="col-md-4 col-xs-12">
+ <div class="col-md-3 col-xs-12">
                   <h2> Select a Date:</h2>
-                  <input placeholder="Select Date" class="form-control" type="text" required="" name ="date" value ="<?php echo date("d-m-Y", strtotime("+5 hours"));?>" style="width:50%;">
+                  <input placeholder="Select Date" class="form-control" type="text" required="" name ="date" value ="<?php echo date("d-m-Y", strtotime("+5 hours"));?>" style="width:100%;">
                   </div><br/><br/>
  
-                               <div class="col-md-4 col-xs-12">           <div class="form-group">  
-                       <button type="submit" class="form-control btn btn-primary" style="width:25%;">Select</button> <div><div>
+                               <div class="col-md-3 col-xs-12">          
+                                 <div class="form-group">  
+                       <button type="submit" class="form-control btn btn-primary" style="width:50%;">Select</button> <div><div>
                        </form>
 
                        
