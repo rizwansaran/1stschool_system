@@ -59,20 +59,14 @@ $year=$year-1;
  
 
 $id=$_SESSION["std_id"];
-//$id="S0024-23";
 
 $total_amount=0;
 
-$query2 = "SELECT * FROM `fee` WHERE `studentid`='$id'AND `feemonth` = '$value111' AND `feeyear`='$year' ";
+$query2 = "SELECT * FROM `fee` WHERE `studentid`='$id'AND `feemonth` = '$value111' AND `feeyear`='$value12' ";
                         $result2 = mysqli_query($link, $query2);
 if(mysqli_num_rows($result2) < 1) {
 
-
-
-
-
-
-                        $query = "SELECT * FROM `chalan` WHERE `student_id`='$id' AND `feemonth` = '$value11' AND `year`='$value12' ";
+ $query = "SELECT * FROM `chalan` WHERE `student_id`='$id' AND `feemonth` = '$value11' AND `year`='$value12' ";
    
                      $result = mysqli_query($link, $query);
 
@@ -272,7 +266,6 @@ $books_fee1=   $row['books_charges'] - $books_charges_consession + $books_charge
 $uniform_fee1=   $row['uniform_charges'] - $uniform_charges_consession + $uniform_charges_extra; 
 $others1=   $row['others'] - $others_consession + $others_extra; 
 
-
    
 $registration_fee=$registration_fee + $registration_fee1 ; 
 
@@ -350,6 +343,7 @@ $tamount= $row2['tamount'];
 $amount= $row2['amount']; 
 $dues=$tamount - $amount;
 
+
 }
 
 
@@ -366,7 +360,7 @@ if($registration_fee != 0) { ?>
 
 <tr class="even pointer"> 
 
-<td class="col-md-5 col-lg-5 col-sm-4 col-sm-4 col-xs-4 " style=" border: 1px solid #dddddd;"!=<?php echo "Registration Fee"; ?></td>
+<td class="col-md-5 col-lg-5 col-sm-4 col-sm-4 col-xs-4 " style=" border: 1px solid #dddddd;" <?php echo "Registration Fee"; ?></td>
 
 <td class="col-md-5 col-lg-5 col-sm-4 col-sm-4 col-xs-4"style="text-align:center; border: 1px solid #dddddd;"><?php echo $registration_fee; ?></td>
 

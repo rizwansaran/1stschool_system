@@ -5,9 +5,6 @@ if(!isLoggedIn()){
   header('location:login.php');
 }
 ?>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 <!DOCTYPE html>
@@ -16,8 +13,7 @@ if(!isLoggedIn()){
     <title>Receive fee!</title>
     <?php include 'php/head.php.inc'; ?>
 
-
-
+   
 
   </head>
 
@@ -166,7 +162,7 @@ $_SESSION["std_id"]=$id;
 
   <?php
 //$id="S0024-23";
-    $query1 = "SELECT DISTINCT feemonth,year FROM `chalan` WHERE `student_id`='$id' AND  NOT EXISTS (SELECT * FROM fee  WHERE chalan.feemonth = fee.feemonth AND chalan.student_id = fee.studentid AND chalan.year = fee.feeyear AND fee.tamount-fee.amount='0') ORDER BY id ASC";
+    $query1 = "SELECT DISTINCT feemonth, year FROM `chalan` WHERE `student_id`='$id' AND  NOT EXISTS (SELECT * FROM fee  WHERE chalan.feemonth = fee.feemonth AND chalan.student_id = fee.studentid AND chalan.year = fee.feeyear AND fee.tamount-fee.amount='0') ORDER BY id ASC";
     $result1 = mysqli_query($link, $query1);
    
     while($row1 = mysqli_fetch_array($result1)) {
@@ -298,9 +294,20 @@ $month="December";
                         
       </form>                
   
+ 
+<?php } ?>
 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
 
-
+     <?php include 'php/footer.php.inc'; ?>
+  </body>
+</html>
 <script>
     $("input[type=checkbox]").on("change", function () {
         var ids = [];
@@ -345,25 +352,3 @@ $month="December";
 </script>
 
 
-
-
- 
-<?php } ?>
-
-
-
-
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-
-     <?php include 'php/footer.php.inc'; ?>
-  </body>
-</html>
-
-  

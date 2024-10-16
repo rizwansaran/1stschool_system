@@ -28,7 +28,7 @@ $image= $row1['logo'];
             <!-- menu profile quick info -->
             <div class="profile">
               <div class="profile_pic">
-                <img src="<?php echo $_SESSION['picture']; ?>" alt="<?php echo "Upload Picture"; ?>" class="img-circle profile_img">
+                <img src="<?php echo $_SESSION['picture']; ?>" alt="<?php echo "Upload Picture"; ?>" class="img-circle profile_img"> 
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -37,7 +37,7 @@ $image= $row1['logo'];
             </div>
             <!-- /menu profile quick info -->
 
-            <br />
+            <br>
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -110,7 +110,8 @@ $image= $row1['logo'];
 
 <li><a><i class="fa fa-money"></i>Fee Collection <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
- <li><a href="fee_collect.php">Collect Fee</a></li> 
+ <li><a href="fee_collect.php">Collect Fee</a></li>
+  <li><a href="fee_collect_family.php">Collect Fee Family</a></li> 
 <li><a href="print_challan_form.php">Print Class Challans </a></li> 
 <li><a href="fee_concession.php">Fee Concessions</a></li> 
 <li><a href="fee_extra.php">Extra Charges</a></li> 

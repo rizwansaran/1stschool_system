@@ -57,7 +57,7 @@ $id=$_SESSION["std_id"];
 
 $total_amount=0;
 
-$query2 = "SELECT * FROM `fee` WHERE `studentid`='$id'AND `feemonth` = '$value111' AND `feeyear`='$year' ";
+$query2 = "SELECT * FROM `fee` WHERE `studentid`='$id'AND `feemonth` = '$value111' AND `feeyear`='$year_to' ";
                         $result2 = mysqli_query($link, $query2);
 if(mysqli_num_rows($result2) < 1) {
 
@@ -391,14 +391,16 @@ $total=$total+$total1;
 
 <tr class="">    
                        
-<td class=" column-title col-md-2 col-lg-2 col-sm-2 col-sm-2 col-xs-2" style="text-align:center; border: 0px solid #dddddd;"> <input type="date"  name="date"  value="<?php echo date('d-m-Y'); ?>"     class="form-control" required /> </td>
+<td class=" column-title col-md-2 col-lg-2 col-sm-2 col-sm-2 col-xs-2" style="text-align:center; border: 0px solid #dddddd;"> 
+    <input type="date"  name="date"  value="<?php echo date('Y-m-d'); ?>"     class="form-control" required /> </td>
 
 
 <td class=" column-title col-md-4 col-lg-4 col-sm-4 col-sm-4 col-xs-4" style="text-align:center; border: 0px solid #dddddd;">  
 <input type="text"  name="" id="" value="<?php echo $total; ?>"     class="form-control" disabled  />
 
-<input type="hidden"  name="tamount" id="num1" value="<?php echo $total; ?>"     class="form-control"  </td>
-<td class="column-title col-md-4 col-lg-4 col-sm-4 col-sm-4 col-xs-4"style="text-align:center; border: 0px solid #dddddd;">  <input type="number"  name="amount" id="num2" max="<?php echo $total; ?>" min="0" placeholder="Paid Amount:"      class="form-control" required/></td>
+<input type="hidden"  name="tamount" id="num1" value="<?php echo $total; ?>"     class="form-control">  </td>
+<td class="column-title col-md-4 col-lg-4 col-sm-4 col-sm-4 col-xs-4"style="text-align:center; border: 0px solid #dddddd;">  
+    <input type="number"  name="amount" id="num2" max="<?php echo $total; ?>" value="<?php echo $total; ?>" min="0" placeholder="Paid Amount:"      class="form-control" required/></td>
  <td class="column-title col-md-4 col-lg-4 col-sm-4 col-sm-4 col-xs-4" style="text-align:center; border: 0px solid #dddddd;"> <p id='answer'>  Balance: <?php echo $total; ?> </p> </td>
 
 
@@ -426,35 +428,49 @@ $total=$total+$total1;
   <button type="submit" name="submit_fee" style="float:right; width:140px;" class="btn btn-primary form-control"> Save </button>
 </td>
 </tr>
-
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<
 
 <script>
-
-    $("#num2").keyup(function(){
-        $("#answer").html('');
-        var n1 = $("#num1").val();
-        var n2 = $("#num2").val();
-        var ans = n1 - n2;
-        $("#answer").html('Balance: ' +ans);
  
+   
+   
+        // Run when #num2 input changes
+        $(document).ready(function(){
 
+            $("#num2").change(function() {
+                $("#answer").html(''); // Clear previous answer
+                
+                // Get values from inputs and parse them as numbers
+                var n1 = parseFloat($("#num1").val()) || 0; // Default to 0 if empty
+                var n2 = parseFloat($("#num2").val()) || 0; // Default to 0 if empty
+                
+                var ans = n1 - n2; // Subtract numbers
+                
+                // Display the result in the #answer div
+                $("#answer").html('Balance: ' + ans);
+            });
+            $("#num2").trigger('change'); 
 
+            $("#num1").keyup(function(){
+                $("#answer").html('');
+                var n1 = $("#num1").val();
+                var n2 = $("#num2").val();
+                var ans = n1 - n2;
+                $("#answer").html('Balance: ' +ans);
+            });
+            $("#num2").keyup(function(){
+                $("#answer").html('');
+                var n1 = $("#num1").val();
+                var n2 = $("#num2").val();
+                var ans = n1 - n2;
+                $("#answer").html('Balance: ' +ans);
+        
+            }); 
 
-
-
-    }); 
-    $("#num1").keyup(function(){
-        $("#answer").html('');
-        var n1 = $("#num1").val();
-        var n2 = $("#num2").val();
-        var ans = n1 - n2;
-        $("#answer").html('Balance: ' +ans);
-
-
-    });
-
+        });
+   
+   
 
 
 

@@ -22,6 +22,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
+    
 <style>
            
 
@@ -40,3 +41,4 @@ display:none;
  <!-- <link href="../build/css/search.css" rel="stylesheet">
 <link href="../../css/font-awesome.min.css" rel="stylesheet"> -->
 <script src="js/fas.js"></script>
+
