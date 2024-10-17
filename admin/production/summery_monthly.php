@@ -33,8 +33,11 @@ if(!isLoggedIn()) {
               <div class="col-md-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                  
-<br><br>
+                    <h2> Monthly SUmmary Report</h2>
+                  <div class="clearfix"></div>
+                  </div>
+                     
+                  <div class="x_content">
                 
             <div class="row">
               <div class="col-md-12 col-xs-12">
@@ -45,7 +48,7 @@ if(!isLoggedIn()) {
                     
                       <div class="row">
                         <div class="col-md-3">
-                       <select id="batch" class="form-control" name="month" >
+                       <select id="month" class="form-control" name="month" >
 
  <option value="" selected disabled >Select Month </option>
  
@@ -369,7 +372,7 @@ $query41 = "SELECT DISTINCT `year` FROM `salary_report` ";
                                   </select>  </div>
 
  
-            <div class="col-md-2" > </div>           
+                      
                         <div class="col-md-2" >
                           <button type="submit" class="btn btn-primary form-control">Find</button>
                         </div>

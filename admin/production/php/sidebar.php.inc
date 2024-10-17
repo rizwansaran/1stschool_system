@@ -111,7 +111,7 @@ $image= $row1['logo'];
 <li><a><i class="fa fa-money"></i>Fee Collection <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
  <li><a href="fee_collect.php">Collect Fee</a></li>
-  <li><a href="fee_collect_family.php">Collect Fee Family</a></li> 
+  <li><a href="fee_collect_family.php">Siblings Collect Fee</a></li> 
 <li><a href="print_challan_form.php">Print Class Challans </a></li> 
 <li><a href="fee_concession.php">Fee Concessions</a></li> 
 <li><a href="fee_extra.php">Extra Charges</a></li> 

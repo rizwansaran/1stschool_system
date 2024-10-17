@@ -69,9 +69,11 @@ text-align:center; border: 2px solid #dddddd;
             <div class="row">
               <div class="col-md-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Fee History on Daily basis</h2>
-                
+                <div class="x_title">
+                <h2>Fee History on Daily basis</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                     
                   <div class="x_content">
 
                     <!-- start form for validation -->
@@ -98,13 +100,12 @@ $query2 = "SELECT DISTINCT `date` FROM `fee` ORDER BY date DESC ";
                  
                                   </select>  </div>
  
-                        <div class="col-md-3"></div>
                         <div class="col-md-3">
                           <button type="submit" name="submit" class="btn btn-primary form-control">Find</button>
                         </div>
                       </div>
                     </form>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
                     <!-- end form for validations -->
 

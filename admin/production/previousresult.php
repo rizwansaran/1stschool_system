@@ -53,11 +53,11 @@ $class= $row1['class'];
                      <?php }?>  
                       </select><br/><br/>
  </div>
-                   <div class="col-md-1"> </div>
+                
                  
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <div class="row">
-<select id="class" class="form-control" name="batch" style="width:100%;" >
+<select id="batch" class="form-control" name="batch" style="width:100%;" >
 
  <option value="" selected disabled >Select Session </option>
 <?php
@@ -79,7 +79,7 @@ $batch= $row1['year'];
                         </div>
                   </div>
                        
- <div class="col-md-1"> </div>
+
                   <div class="col-md-3">
                     
                         <button type="submit" class="form-control btn btn-primary">View</button>
@@ -233,89 +233,101 @@ $query23 = "SELECT DISTINCT `subject` FROM `result` WHERE `class`= '$class' AND 
 
 
 
-<?php 
+ <?php 
 $subject=$sub['subject'];
-   $id = $row12['studentid'];
+$id = $row12['studentid'];
 $class = $_POST['class'];
-
-                       	$batch = $_POST['batch'];
-                          $query9 = "SELECT * FROM `result` WHERE `studentid`= '$id' AND `class`= '$class' AND `subject`= '$subject' AND `term`= '1' AND `year`= '$batch' ";
-                          $result14 = mysqli_query($link, $query9);
+$batch = $_POST['batch'];
+$query9 = "SELECT * FROM `result` WHERE `studentid`= '$id' AND `class`= '$class' AND `subject`= '$subject' AND `term`= '1' AND `year`= '$batch' ";
+$result14 = mysqli_query($link, $query9);
             
 $totalmarks = 0;  $marks = 0;
                          
-
+if(mysqli_num_rows($result14) > 0){
 $res = mysqli_fetch_array($result14)
  ?>
-
-
-
-                           
-                       
-                            
-<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $res['marks'] ; ?></td> 
+                     
+<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $marks_term1=$res['marks'] ; ?></td> 
                              
-
    <?php
        $totalmarks = $totalmarks + $res['total'];        
    
   $marks = $marks + $res['marks'];        
-   
-
-
+}
+else {
+    ?>
+    
+                                
+<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $marks ; ?></td> 
+ 
+ <?php    
+}
 
 $id = $row12['studentid'];
 $class = $_POST['class'];
+$batch = $_POST['batch'];
+$query9 = "SELECT * FROM `result` WHERE `studentid`= '$id' AND `class`= '$class' AND `subject`= '$subject' AND `term`= '2' AND `year`= '$batch' ";
+$result14 = mysqli_query($link, $query9);
+$totalmarks2 = 0;  $marks2 = 0;
 
-                       	$batch = $_POST['batch'];
-                          $query9 = "SELECT * FROM `result` WHERE `studentid`= '$id' AND `class`= '$class' AND `subject`= '$subject' AND `term`= '2' AND `year`= '$batch' ";
-                          $result14 = mysqli_query($link, $query9);
-            
+if(mysqli_num_rows($result14) > 0){
 
-                          $totalmarks2 = 0;  $marks2 = 0;
-                         $res2 = mysqli_fetch_array($result14) ?>
+$res2 = mysqli_fetch_array($result14) ?>
 
-
-<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $res2['marks'] ; ?></td> 
+<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $marks_term2=$res2['marks'] ; ?></td> 
                          
  
 <?php
    
-       $totalmarks2 = $totalmarks2 + $res2['total'];        
+  $totalmarks2 = $totalmarks2 + $res2['total'];        
   $marks2 = $marks2 + $res2['marks'];        
-   
-           
+ 
+}
+else {
+    ?>
+                           
+<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $marks2 ; ?></td> 
+ 
+ <?php    
+}
+
 $id = $row12['studentid'];
 $class = $_POST['class'];
-
-                      
-				$batch = $_POST['batch'];
-                          $query222= "SELECT * FROM `result` WHERE `studentid`= '$id'  AND `class`= '$class' AND `subject`= '$subject' AND `term`= '3' AND `year`= '$batch' ";
-                          $result222 = mysqli_query($link, $query222);
+$batch = $_POST['batch'];
+ 
+  $query222= "SELECT * FROM `result` WHERE `studentid`= '$id'  AND `class`= '$class' AND `subject`= '$subject' AND `term`= '3' AND `year`= '$batch' ";
+  $result222 = mysqli_query($link, $query222);
             
-$totalmarks3 = 0;  $marks3 = 0;
-                         $res3 = mysqli_fetch_array($result222) ?>
-                         
-<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $res3['marks'] ; ?></td> 
-<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $res['total'] +  $res2['total'] + $res3['total'] ; ?></td> 
+  $totalmarks3 = 0;  $marks3 = 0;
+      
+  if(mysqli_num_rows($result222) > 0){
 
+  $res3 = mysqli_fetch_array($result222) ?>
 
-<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $res['marks'] + $res2['marks'] + $res3['marks'] ; ?></td> 
+<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $marks_term3=$res3['marks'] ; ?></td> 
+<?php 
+  $totalmarks3 = $totalmarks3 + $res3['total'];                 
+  $marks3 = $marks3 + $res3['marks'];
+
+}
+else {
+    ?>
+                                   
+<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $marks3 ; ?></td> 
+ 
+ <?php    
+}
+?>
+
+<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $totalmarks +  $totalmarks2 + $totalmarks3 ; ?></td> 
+<td class=" "  style="text-align:center; border: 1px solid black;"><?php echo $marks + $marks2 + $marks3 ; ?></td> 
                           
             
 <?php
    
-       $totalmarks3 = $totalmarks3 + $res3['total'];        
-   
-
-                             
-                     
-             
-       $marks3 = $marks3 + $res3['marks'];        
-   
-            if(($res['total'] +  $res2['total'] + $res3['total']) > 0){               
+if(($totalmarks +  $totalmarks2 + $totalmarks3) > 0){               
             
-$result2=(($res['marks'] + $res2['marks'] + $res3['marks'])/($res['total'] +  $res2['total'] + $res3['total']))*100;
+$result2=(($marks + $marks2 + $marks3)/($totalmarks +  $totalmarks2 + $totalmarks3))*100;
 if($result2>=33)
 {
 $status1= 'Pass';}
@@ -340,56 +352,37 @@ $status1= 'Fail';
 
  </tr>
                           
-                           
+<?php 
 
-                            <?php 
-
-                          
-          
-
-       $totalmark = $totalmark + ($res['total'] +  $res2['total'] + $res3['total']);        
-   
-
-                             
-                   
-             
-       $mark = $mark + ($res['marks'] + $res2['marks'] + $res3['marks']);        
+  $totalmark = $totalmark + ($totalmarks +  $totalmarks2 + $totalmarks3);                 
+  $mark = $mark + ($marks + $marks2 + $marks3);        
    
  }
-                        
-               ?>
+?>
+</tbody>
 
-
-                           
-                        
- 
-                        
-
-
-
-                       </tbody>
-  
-                      </table>
+</table>
 <?php 
 $class=$_POST['class'];
  $g1='M+F';
  $query10 = "SELECT * FROM `staff` WHERE (class = '$class' AND section ='$g')
 OR (class = '$class' AND section ='$g1') ";
-                          $result10 = mysqli_query($link, $query10);
-$res10 = mysqli_fetch_array($result10);
-$name=$res10['fullname'];
+$result10 = mysqli_query($link, $query10);
+if(mysqli_num_rows($result10) > 0){
+  $res10 = mysqli_fetch_array($result10);
+  $name=$res10['fullname'];
+}
+else{
+    $name= "";
+}
             
 
 ?>  
 
     <table class= "col-md-12"  width='100%'> <tbody>
-
-
-
-
-<tr class="even pointer">
-                            <td class=" " style="text-align:center; border: 1px solid black;"><h2  >Total Marks: <?php echo $totalmark; ?></h2></td>
-                            <td class=" " style="text-align:center; border: 1px solid black;><h2  ">Obt. Marks: <?php echo $mark; ?></h2> </td>
+      <tr class="even pointer">
+        <td class=" " style="text-align:center; border: 1px solid black;"><h2>Total Marks: <?php echo $totalmark; ?></h2></td>
+        <td class=" " style="text-align:center; border: 1px solid black;"><h2 >Obt. Marks: <?php echo $mark; ?></h2> </td>
 
                             
 <?php 
@@ -403,7 +396,7 @@ else{
 $status= 'Fail';}
 ?>
  <td class=" " style="text-align:center; border: 1px solid black;"><h2  >Per.(%): <?php echo $result; ?> % </h2></td>
-<td class=" "><h2>   </h2> </td>
+
                            
 <?php if($status == 'Fail'){?>
                       <td class=" " style="text-align:center;color:red;border: 1px solid black;"><h2  >Result: <?php echo $status ;?></h2>  </td>
@@ -415,27 +408,18 @@ $status= 'Fail';}
 else {
 $status= 'Fail';
  ?>
-<td class=" "><h2>   </h2> </td>
+
  <td class=" " style="text-align:center;color:red;border: 1px solid black;"><h2  style="text-align:center; border: 0px solid black;">Result: <?php echo $status ;?></h2>  </td>
-<td class=" "><h2>   </h2> </td>
                      
 <?php 
 
 }
-
-
 ?>
-                     
-                          </tr>
+</tr>
 
 
 <tr class=" " style="text-align:left;color:black;border: 1px solid black;"> 
-<td class=" "  ><h2 >  Teacher Remarks:</h2> </td>
-<td class=" "><h2>  <br><br> </h2> </td>
-<td class=" "><h2>  </h2> </td>
-<td class=" "><h2>   </h2> </td>
-<td class=" "><h2>  </h2> </td>
-<td class=" "><h2> </h2> </td>
+<td class=" " colspan="4" ><h2 >  Teacher Remarks:</h2> </td>
 
 </tr>
 

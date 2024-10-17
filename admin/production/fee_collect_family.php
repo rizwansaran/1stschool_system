@@ -12,11 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    if(isset($_POST['fcnic']) && isset($_POST['feemonth'])){
     $fcnic = $_POST['fcnic'];
     $feemonth_year = $_POST['feemonth'];
+    list($stfname, $stfcnic) = explode('-', $fcnic);
     // Split feemonth-year into separate month and year
     list($feemonth, $feeyear) = explode('-', $feemonth_year);
 
     // Fetch all students based on father's name or CNIC
-    $query_students = "SELECT * FROM `student` WHERE `fname` = '$fcnic' OR `fcnic` = '$fcnic' AND `status`='Active'";
+    $query_students = "SELECT * FROM `student` WHERE `fname` = '$stfname' AND `fcnic` = '$stfcnic' AND `status`='Active'";
     $result_students = mysqli_query($link, $query_students);
 
     $students = [];
@@ -161,12 +162,22 @@ if (isset($_POST['collect_fee'])) {
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="" style="color: red;"> <?php echo $msg; ?></div>
             <div class="row">
               <div class="col-md-12 col-xs-12">
                 <div class="x_panel">
+                  <div class="x_title">
+
+                      <h2> Siblings Fee Collection </h2>
+                       <div class="clearfix"></div>
+                     
+                  </div>
                   
                   <div class="x_content">
+               
+                      <div class="" style="color: red;">  <?php echo $msg; ?> </div>
+                     
+                 
+           <br>
 
                     <!-- start form for validation -->
                   <?php
@@ -184,8 +195,10 @@ if (isset($_POST['collect_fee'])) {
                                     $stfname = $row11['fname'];
                                     $stfcnic = $row11['fcnic'];
                                 ?>
-                                    <option value="<?php echo $stfcnic; ?>"><?php echo $stfname; ?> (<?php echo $stfcnic; ?>)</option>
-                                <?php } ?>
+                                    <!-- <option value="<?php echo $stfcnic; ?>"><?php echo $stfname; ?> (<?php echo $stfcnic; ?>)</option> -->
+                                    <option value="<?php echo $stfname."-".$stfcnic; ?>"><?php echo $stfname; ?> (<?php echo $stfcnic; ?>)</option>
+                           
+                                    <?php } ?>
                             </select>
                           </div>
 
@@ -208,8 +221,6 @@ if (isset($_POST['collect_fee'])) {
                                   ?>
                               </select>
                           </div>
-
-                          <div class="col-md-1"></div>
                           <div class="col-md-3">
                               <button type="submit" class="btn btn-primary form-control">Find</button>
                           </div>
@@ -253,7 +264,7 @@ if (isset($_POST['collect_fee'])) {
                                                  
                                                 <td class="text-center"><?php echo $fee['total_fee']; ?></td>
                                                 <td class="text-center">
-                                                    <input type="number" class="form-control" name="paid_fee[]" value="<?php echo $fee['total_fee']; ?>" />
+                                                    <input type="number" class="form-control paid_fee" name="paid_fee[]" value="<?php echo $fee['total_fee']; ?>" />
                                                     <input type="hidden" name="student_id[]" value="<?php echo $fee['student_id']; ?>" />
                                                     <input type="hidden" name="total_fee[]" value="<?php echo $fee['total_fee']; ?>" />
                                                     <input type="hidden" name="class[]" value="<?php echo $fee['class']; ?>" />
@@ -261,6 +272,10 @@ if (isset($_POST['collect_fee'])) {
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
+
+                                        <tr>
+                                        <td class="text-center" colspan="7"> <h3 id="total_amount_fee"></h3> </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <button type="submit" name="collect_fee" class="btn btn-primary">Collect Fee</button>
@@ -284,47 +299,32 @@ if (isset($_POST['collect_fee'])) {
      <?php include 'php/footer.php.inc'; ?>
   </body>
 </html>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 <script>
-    $("input[type=checkbox]").on("change", function () {
-        var ids = [];
-        $('input[type=checkbox]:checked').each(function () {
-            ids.push($(this).val());
-        });
-        $.ajax({
-            url: "test.php",
-            type: "POST",
-            async: true,
-            cache: false,
-            data: ({value: ids}),
-            dataType: "text",
-            success: function (data) {
-              $("#fee_table").html(data);
+$(document).ready(function() {
+    // Function to calculate the sum of all paid fees
+    function calculateTotalFee() {
+        let totalFee = 0;
 
-
+        // Iterate over each .paid_fee input field to sum the values
+        $('.paid_fee').each(function() {
+            let feeValue = parseFloat($(this).val()); // Get the value as a float
+            if (!isNaN(feeValue)) {
+                totalFee += feeValue; // Add to the total fee
             }
         });
 
+        // Display the total fee in the #total_amount_fee element
+        $('#total_amount_fee').text('Total Paid Fee: ' + totalFee.toFixed(2));
+    }
 
- $.ajax({
-            url: "test_total.php",
-            type: "POST",
-            async: true,
-            cache: false,
-            data: ({value: ids}),
-            dataType: "text",
-            success: function (data) {
-              $("#total_fee").html(data);
-
-
-            }
-        });
-
-
-
-
+    // Attach change event listener to .paid_fee input fields
+    $(document).on('input', '.paid_fee', function() {
+        calculateTotalFee(); // Recalculate the total when any input changes
     });
 
-   
+    // Calculate total on page load
+    calculateTotalFee();
+});
 </script>
-
 

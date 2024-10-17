@@ -160,8 +160,7 @@ $query3 = "SELECT DISTINCT `feeyear` FROM `fee` ";
  <option value="<?php echo $fee1['feeyear'];?>"> <?php echo $fee1['feeyear']; ?>  </option> <?php } ?>
                                     
                                   </select>  </div>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-3">
+                         <div class="col-md-3">
                           <button type="submit" name="submit" class="btn btn-primary form-control">Find</button>
                         </div>
                       </div>

@@ -34,7 +34,7 @@ if(!isLoggedIn()){
                       ?>
                     <form action=" " method="post">
              <div class="row">     <div class="col-md-3 col-xs-12">
- <h3>Class*:</h3>
+ <label>Class*:</label>
                         <select id="class" class="form-control" name="class" style="width:100%;" >
 
  <option value="" selected disabled>Select Class </option>
@@ -54,11 +54,11 @@ $class= $row1['class'];
                      <?php }?>  
                       </select><br/><br/>
  </div>
- <div class="col-md-1"> </div>
+ <!-- <div class="col-md-1"> </div> -->
                  
                   <div class="col-md-3 col-xs-12">
-             <h3>Month*:</h3>
-<select id="class" class="form-control" name="month" style="width:100%;" >
+             <label>Month*:</label>
+<select id="month" class="form-control" name="month" style="width:100%;" >
 
  <option value="" selected disabled >Select Month </option>
 <?php
@@ -80,11 +80,11 @@ $month= $row1['month'];
                         </div>
                  
 
-                   <div class="col-md-1"> </div>
+                   <!-- <div class="col-md-1"> </div> -->
                  
                   <div class="col-md-3 col-xs-12">
-              <h3>Year*:</h3>   
-<select id="class" class="form-control" name="batch" style="width:100%;" >
+              <label>Year*:</label>   
+<select id="batch" class="form-control" name="batch" style="width:100%;" >
 
  <option value="" selected disabled >Select Session </option>
 <?php
@@ -104,12 +104,13 @@ $batch= $row1['year'];
                       </select><br/><br/>
 
                         </div>
+                        <div class="col-md-2 col-xs-6" style="align:right; margin-top:25px;">
+                        <!-- <label>Action:</label> -->
+                    <button type="submit"  class="form-control btn btn-primary">View</button>
+                </div>
                   </div>
                     <br/><br/>   
-                  <div class="col-md-3 col-xs-6" style="align:right;">
-                    
-                        <button type="submit"  class="form-control btn btn-primary">View</button>
-                    </div>
+                  
                   </div>
                    </form>
                     <?php }

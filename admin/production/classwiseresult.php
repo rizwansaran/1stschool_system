@@ -296,12 +296,11 @@ $status1= 'Fail';}
                         </tbody>
   
                       </table>
-   <table class= "col-md-12"  width='100%'> <tbody>
-
-
- <tr class="even pointer">
-                           <td class=" " style="text-align:center; border: 1px solid black;"><h2  >Total Marks: <?php echo $totalmarks; ?></h2></td>
-                            <td class=" " style="text-align:center; border: 1px solid black;><h2  ">Obt. Marks: <?php echo $marks; ?></h2> </td>
+   <table class= "col-md-12"  width='100%' style="margin-top:20px;">
+     <tbody>
+      <tr class="even pointer">
+        <td class=" " style="text-align:center; border: 1px solid black;"><h2> Total Marks: <?php echo $totalmarks; ?></h2></td>
+        <td class=" " style="text-align:center; border: 1px solid black;"><h2> Obt. Marks: <?php echo $marks; ?></h2> </td>
 
 
 <?php 
@@ -313,9 +312,9 @@ else{
 
 $status= 'Fail';}
 ?>
- <td class=" " style="text-align:center; border: 1px solid black;"><h2  >Per.(%): <?php echo $result; ?> % </h2></td>
+ <td class=" "  style="text-align:center; border: 1px solid black;"><h2  >Per.(%): <?php echo $result; ?> % </h2></td>
 
-           <td class=" "><h2>   </h2> </td>                
+                          
 <?php if($status == 'Fail'){?>
                       <td class=" " style="text-align:center;color:red;border: 1px solid black;"><h2  >Result: <?php echo $status ;?></h2>  </td>
                             <?php }
@@ -327,12 +326,7 @@ $status= 'Fail';}
 
  </tr>
 <tr class=" " style="border: 1px solid black;"> 
-<td class=" "  ><h2 >  Teacher Remarks:</h2> </td>
-<td class=" "><h2>  <br><br> </h2> </td>
-<td class=" "><h2>  </h2> </td>
-<td class=" "><h2>   </h2> </td>
-<td class=" "><h2>  </h2> </td>
-
+<td class=" " colspan="4" ><h2 >  Teacher Remarks:</h2> </td>
 
 </tr>
                             
@@ -343,10 +337,16 @@ $status= 'Fail';}
 $class=$_POST['class'];
  $g1='M+F';
  $query10 = "SELECT * FROM `staff` WHERE (class = '$class' AND section ='$g')
-OR (class = '$class' AND section ='$g1') ";
-                          $result10 = mysqli_query($link, $query10);
-$res10 = mysqli_fetch_array($result10);
-$name=$res10['fullname'];
+    OR (class = '$class' AND section ='$g1') ";
+    $result10 = mysqli_query($link, $query10);
+    if(mysqli_num_rows($result10) > 0){
+      $res10 = mysqli_fetch_array($result10);
+      $name=$res10['fullname'];
+    }
+    else{
+        $name= "";
+    }
+    
             
 
 ?> 

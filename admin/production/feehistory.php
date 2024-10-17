@@ -74,7 +74,7 @@ $stfname= $row11['fname'];
 <br/>
 
    </div>
-                        <div class="col-md-3"></div>
+                  
                         <div class="col-md-3">
                           <button type="submit" class="btn btn-primary form-control">Find</button>
                         </div>

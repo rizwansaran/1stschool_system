@@ -50,11 +50,10 @@ text-align:center; border: 1px solid #dddddd;
                      
                       <div class="row"?>
                         <div class="col-md-3">
- <input type="text" name="batch" value="<?php echo date('Y'); ?>-<?php echo date('Y')+1; ?>" required class="form-control"/>
+ <input type="hidden" name="batch" value="<?php echo date('Y'); ?>-<?php echo date('Y')+1; ?>" required class="form-control"/>
                        
   </div>
-                       <br><br><br>
-  <div class="col-md-3">  </div>
+                       <br>
                         <div class="col-md-3">
                           <button type="submit" class="btn btn-primary form-control">Promote</button>
                         </div>
@@ -128,7 +127,7 @@ else{
 else {
 ?>
 
- <h2 style="color:red"><?php echo "Please Enter Final Result of all Students 1st......"; ?></h2>
+ <h2 style="color:red"><?php echo "Please Enter Final Result of all Students To promote Classes"; ?></h2>
 
 <?php
 
@@ -137,7 +136,7 @@ else {
 
 
  ?>
-                                          </div>
+ </div>
                   </div>
                 </div>
               </div>

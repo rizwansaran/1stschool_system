@@ -15,7 +15,7 @@ if(!isLoggedIn()){
     <div class="container body">
       <div class="main_container">
         <?php include 'php/sidebar.php.inc'; ?>
-        <?php // include 'php/topnav.php.inc'; ?>
+        <?php  include 'php/topnav.php.inc'; ?>
 
 
         <!-- page content -->
@@ -40,7 +40,7 @@ if($select=='0')
                   <form id="demo-form" data-parsley-validate action="studentresult.php" method="post" enctype="multipart/form-data">
                      
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
  <label for="id">Student * :</label>
                      <select id="class" class="form-control" name="id" style="width:100%;" >
 
@@ -81,7 +81,7 @@ $batch= $row11['batch'];
  
     </div>
  <input type="hidden" id="batch" value="<?php echo $batch;?>" class="form-control" name="batch"  required />
- <div class="col-md-1"> </div>
+ <!-- <div class="col-md-1"> </div> -->
                  
                         <div class="col-md-3"> 
   <label for="id">Term * :</label>
@@ -121,9 +121,9 @@ $term1="3rd Term";
 <?php }?> 
                          </select> </div>
 
- <div class="col-md-1"> </div>
-                        <div class="col-md-3">
-<br>
+ <!-- <div class="col-md-1"> </div> -->
+                        <div class="col-md-2" style="margin-top:25px;">
+
                           <button type="submit" class="btn btn-primary form-control">View</button>
                       </div>
                   </div>
