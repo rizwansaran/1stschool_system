@@ -162,27 +162,28 @@ $status1="Active";
 
 
 <?php
-$id=$row['id'];
-$batch= date("n");
-                         $query11 = "SELECT * FROM `chalan` WHERE studentid = '$id' AND feemonth= '$batch'";
-                       $result11 = mysqli_query($link, $query11);
-                       if(mysqli_num_rows($result11) <1){
+// $id=$row['id'];
+// $batch= date("n");
+//                          $query11 = "SELECT * FROM `chalan` WHERE studentid = '$id' AND feemonth= '$batch'";
+//                        $result11 = mysqli_query($link, $query11);
+//                        if(mysqli_num_rows($result11) <1){
  
-       $row2 = mysqli_fetch_array($result2);
-echo  $row2['studentid'];
+//        $row2 = mysqli_fetch_array($result2);
+// echo  $row2['studentid'];
 
                         ?>
-<li><a href="abc2.php?sid=<?php echo $row['id'];?>"><button type="button" class="form-control btn btn-primary">Genrate Chalan</button></a></li>													
+<!-- <li><a href="abc2.php?sid=<?php echo $row['id'];?>"><button type="button" class="form-control btn btn-primary">Genrate Chalan</button></a></li>													 -->
 
 <?php 
-} 
-else if(mysqli_num_rows($result11) >0)
- { ?>
+// } 
+// else if(mysqli_num_rows($result11) >0)
+//  {
+ ?>
 
-<li><a href="studentchalan32.php?sid=<?php echo $row['id'];?>"><button type="button" class="form-control btn btn-primary">Print Chalan</button></a></li>
+<!-- <li><a href="studentchalan32.php?sid=<?php echo $row['id'];?>"><button type="button" class="form-control btn btn-primary">Print Chalan</button></a></li> -->
 
 <?php 
-}
+// }
 $id=$row['id'];
 $batch=$row['batch'];
  $query9 = "SELECT * FROM `result` WHERE `studentid`= '$id' AND `year`= '$batch' ";
