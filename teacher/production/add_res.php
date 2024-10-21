@@ -44,7 +44,7 @@ if(!isset($_POST['submit'])){
                     <div class="row">
 
                   <div class="form-group">
- <div class="col-md-4 col-sm-12 col-xs-12">
+ <div class="col-md-3 col-sm-12 col-xs-12">
                                    <h2> Select the class:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
                         <select id="class" class="form-control" name="class" style="width:100%;" >
 <?php
@@ -63,10 +63,10 @@ $class= $row1['class'];
                       </select><br/>
                       </div>
                       
-                       <div class="col-md-4 col-sm-12 col-xs-12">
+                       <div class="col-md-3 col-sm-12 col-xs-12">
                       
  <h2> Select the Section:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="section" style="width:100%;" >
+                        <select id="section" class="form-control" name="section" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
  $query11 = "SELECT DISTINCT section FROM `subject` WHERE `t_id`='$tid' ORDER BY section DESC";
@@ -96,11 +96,11 @@ $sec= 'Boys+Girls';
                       </select><br/> 
                       
                       </div>
-               <div class="col-md-4 col-sm-12 col-xs-12">        
+               <div class="col-md-3 col-sm-12 col-xs-12">        
                       
                       
 <h2> Select the Session:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="year" style="width:100%;" >
+                        <select id="year" class="form-control" name="year" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
  $query11 = "SELECT DISTINCT batch FROM `student` ORDER BY batch DESC";
@@ -121,9 +121,9 @@ $batch= $row11['batch'];
                       </select><br/>
 <br/>
 </div>
- <div class="col-md-4 col-sm-12 col-xs-12">
+ <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="form-group">
-                       <button type="submit" name="submit" class="form-control btn btn-primary" style="width:100%;">Select</button>
+                       <button type="submit" name="submit" class="form-control btn btn-primary" style="width:70%; margin-top:60px;">Select</button>
                        
                        
                        </div>
@@ -150,7 +150,7 @@ if(isset($_POST['submit'])){
                     <div class="row">
 
                   <div class="form-group">
-<div class="col-md-4 col-sm-12 col-xs-12">
+<div class="col-md-3 col-sm-12 col-xs-12">
                   <h2> Select the Term:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
 
                   <select id="term" class="form-control" name="term" style="width:100%;" >
@@ -162,9 +162,9 @@ if(isset($_POST['submit'])){
 <br/>
 
 </div>
-<div class="col-md-4 col-sm-12 col-xs-12">
+<div class="col-md-3 col-sm-12 col-xs-12">
                  <h2> Select the Subject:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="subject" style="width:100%;" >
+                        <select id="subject" class="form-control" name="subject" style="width:100%;" >
 
 <?php
 $tid= $_SESSION['id'];
@@ -183,14 +183,14 @@ $subject= $row1['subject'];
                       </select><br/>
                  </div>     
                      
-<input  class="form-control" type="hidden" required="" name ="section" value="<?php echo $section; ?>" style="width:50%;">
+<input  class="form-control" type="hidden"  name ="section" value="<?php echo $section; ?>" style="width:50%;">
 
 
 <br/><br/>
- <div class="col-md-4 col-sm-12 col-xs-12">
+ <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="form-group"> 
-                        <br/>
-                       <button type="submit" name="submit" class="form-control btn btn-primary" style="width:25%;">Select</button>
+                        
+                       <button type="submit" name="submit" class="form-control btn btn-primary" style="width:70%; margin-top:23px;">Select</button>
                        </div>
                        </div>
                        </form>

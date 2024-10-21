@@ -120,12 +120,12 @@ $section1=$row2['section'];
                          
 
 if( $section1=='M+F'){
-                          $query13 = "SELECT * FROM `student` WHERE `id`='$stid' AND `class`='$class' AND `status`='Active'";
+                          $query13 = "SELECT * FROM `student` WHERE `id`='$stid' AND `class`='$class' ";
                           $result13 = mysqli_query($link, $query13);   
 }
 else
 {
-  $query13 = "SELECT * FROM `student` WHERE `id`='$stid' AND `class`='$class'  AND `gender`='$section' AND `status`='Active'";
+  $query13 = "SELECT * FROM `student` WHERE `id`='$stid' AND `class`='$class'  AND `gender`='$section'";
                           $result13 = mysqli_query($link, $query13);  
                        }
                        $r = mysqli_fetch_array($result13);

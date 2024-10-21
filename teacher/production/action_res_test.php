@@ -15,7 +15,7 @@ $count = count($sid);
 $orderdate = explode('-', $date);
 //$year = $orderdate[0];
 
-$year= $_SESSION['year'];
+$year= $_POST['year'];
 $t_id= $_POST['tid']; 
 $subject = $_SESSION['subject'];
 $section = $_SESSION['section'];

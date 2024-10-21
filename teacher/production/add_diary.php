@@ -37,7 +37,7 @@ if(!isLoggedIn()){
                   <div class="x_content">
                     <form action="add_diary1.php" method="post">
                   <div class="col-md-12">
-                   <div class="col-md-6 col-xs-12">
+                   <div class="col-md-4 col-xs-12">
 
                   <h2> Select the Class</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
                               <select id="class" class="form-control" name="class" style="width:100%;" >
@@ -55,9 +55,9 @@ $class= $row1['class'];
                         <option value="<?php echo $class?> "><?php echo $class?></option>
                      <?php }?>  
                       </select><br/><br/> </div>
-<div class="col-md-6 col-xs-12">
+<div class="col-md-4 col-xs-12">
 <h2> Select the Section:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="section" style="width:100%;" >
+                        <select id="section" class="form-control" name="section" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
  $query11 = "SELECT DISTINCT section FROM `subject` WHERE `t_id`='$tid' ORDER BY section DESC";
@@ -86,9 +86,9 @@ $sec= 'Boys+Girls';
  
                       </select><br/><br/>
                       </div>
-<div class="col-md-6 col-xs-12">
+<div class="col-md-4 col-xs-12">
                         <div class="form-group">
-                       <button type="submit" class="form-control btn btn-primary" style="width:50%;">Select</button> </div></div>
+                       <button type="submit" class="form-control btn btn-primary" style="width:50%; margin-top:60px;">Select</button> </div></div>
                        </form>
                        
 

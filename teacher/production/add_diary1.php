@@ -36,17 +36,17 @@ if(!isLoggedIn()){
 
                   <div class="x_content">
                     <form action="action_diary.php" method="post">
-                  <div class="col-md-12">
+                  <div class="row">
                    
 <div class="col-md-6 col-xs-6">
                   <h2> Select a Due Date:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
                   <div class="form-group">
-                  <input class="form-control" type="date"  name ="date"  required/ style="width:100%;">
+                  <input class="form-control" type="date"  name ="date"  style="width:100%;" required>
                   </div><br/> </div>
 <div class="col-md-6 col-xs-6">
 
                  <h2> Select the Subject:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="subject" style="width:100%;" >
+                        <select id="subject" class="form-control" name="subject" style="width:100%;" >
 
 <?php
 $tid= $_SESSION['id'];
@@ -65,22 +65,23 @@ $subject= $row1['subject'];
                      <?php }?>  
                       </select><br/><br/> </div>
 
-                 <div class="col-md-6 col-xs-6">
-                                         <h2>Details</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
+                 <div class="col-md-12 col-xs-12">
+              <h2>Details</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
 
 
                   <textarea class="form-control form-text-light" rows="5" name="text" id="comment" placeholder="Your Message Here"  required/> </textarea>
                         
 </div>
-                        <br/><br/>
+                       
 <?php $class = $_POST['class'];
                           $_SESSION['class'] = $class; 
 $section = $_POST['section'];
  $_SESSION['section'] = $section;
 ?>
- <div class="col-md-6 col-xs-6">
+
+ <div class="col-md-3 col-xs-12">
                         <div class="form-group">
-                       <button type="submit" class="form-control btn btn-primary" style="width:25%;">Done</button> </div></div>
+                       <button type="submit" class="form-control btn btn-primary" style="width:50%; margin-top:50px;">Done</button> </div></div>
                        </form>
  
                        

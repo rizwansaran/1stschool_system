@@ -62,7 +62,7 @@ $class= $row1['class'];
                       </select><br/>
  <h2> Select Section:</h2><hr style="width:20%;margin-left:-1px;margin-top:-1px;">
 
-                  <select id="term" class="form-control" name="section" style="width:100%;" >
+                  <select id="section" class="form-control" name="section" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
  $query11 = "SELECT DISTINCT section FROM `result1` WHERE `t_id`='$tid'";
@@ -129,7 +129,7 @@ $termm= '4th Week';
 <br/>
 <h2> Select Test Month:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
 
-                  <select id="term" class="form-control" name="month" style="width:100%;" >
+                  <select id="month" class="form-control" name="month" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
  $query11 = "SELECT DISTINCT month FROM `result1` WHERE `t_id`='$tid'";
@@ -139,11 +139,13 @@ while($row11 = mysqli_fetch_array($result11))
                         {
 
 $month= $row11['month'];
+$monthName = date('F', mktime(0, 0, 0, $month, 10)); 
+                              
 
 
 ?>
                       
-                    <option value="<?php echo $month;?>"><?php echo $month ;?></option>
+                    <option value="<?php echo $month;?>"><?php echo $monthName ;?></option>
                      <?php }?>  
  
                         

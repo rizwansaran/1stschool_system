@@ -8,8 +8,8 @@ require 'php/config.php';
     $date = $_POST['date'];
     $subject = $_POST['subject'];
     $text = $_POST['text'];
-     $d =date("Y"); 
-    $year =date("Y-m-d"); 
+     $d =date("Y-m-d"); 
+    $year =date("Y"); 
     $tid=$_SESSION['id'];
    
   $query ="INSERT INTO `diary`(`t_id`,`year`, `text`, `p_date`, `d_date`, `class`,`section`, `subject`) 

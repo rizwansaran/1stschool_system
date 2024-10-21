@@ -70,7 +70,8 @@ elseif($d <= $date1){
                   $section = $_POST['section'];
 
                          $year = $_POST['year'];
-$month = $_POST['month'];
+                    $_SESSION['year']= $year;
+                    $month = $_POST['month'];
 
   $term = $_POST['term'];
  $query17 = "SELECT * FROM `result1` WHERE `class`='$class' AND `subject`='$subject' AND `term`='$term' AND `t_id`='$teacher' AND `section`='$section' AND `month`='$month' AND `year`='$year' ";
@@ -277,6 +278,7 @@ $_SESSION['subject']=$subject;
 $section= $row12['section'];
 $_SESSION['section']= $section;
 
+
  
 
       $a++;                  } }
@@ -308,7 +310,7 @@ else
                       $subject = $_POST['subject'];
    $section = $_SESSION['section'];
 
-                         $year = $_SESSION['year'];
+                         $year = $_POST['year'];
 
 
 $term = $_POST['term'];
@@ -336,8 +338,7 @@ $query1 = "SELECT * FROM `result1` WHERE `class`='$class' AND `subject`='$subjec
 $subject = $_POST['subject'];
 $_SESSION['subject']=$subject;
 $section = $_POST['section'];
-$_SESSION['section']= $section;
-$year= $_SESSION['year'];
+$year= $_POST['year'];
  
 
      
@@ -455,7 +456,7 @@ $year= $_SESSION['year'];
 <?php
                      $teacher= $_SESSION['id'];
 $subject = $_POST['subject'];
-$year= $_SESSION['year'];
+$year= $_POST['year'];
 
  $query12 = "SELECT * FROM `subject` WHERE `t_id`='$teacher' AND `class`='$class' AND `subject`='$subject' ";
                         $result12 = mysqli_query($link, $query12);
@@ -486,7 +487,8 @@ $a=1;
 
 </td>
 
-
+<input  class="form-control" type="hidden" required="" name ="sid[]" value="<?php echo $row['id']; ?>" style="width:50%;">
+                 
                          
   <td class=" " style="text-align:center;">
 
@@ -524,6 +526,8 @@ $_SESSION['section']= $section;
                         
                       </table>
                     </div>
+                     <input  class="form-control" type="hidden" required="" name ="year" value="<?php echo $_POST['year']; ?>" style="width:50%;">
+
 <input  class="form-control" type="hidden" required="" name ="tid" value="<?php echo $_SESSION['id']; ?>" style="width:50%;">
 
 <input  class="form-control" type="hidden" required="" name ="month" value="<?php echo $_POST['month']; ?>" style="width:50%;">

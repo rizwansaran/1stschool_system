@@ -128,7 +128,7 @@ $total= $row12['total'];
 $marks= $row12['marks'];                         
  
  
- $sql = "SELECT * FROM `student` WHERE `id`='$std_id' AND `status`='Active' ";
+ $sql = "SELECT * FROM `student` WHERE `id`='$std_id'  ";
                           $teachers = mysqli_query($link, $sql);
 
 $a=1;
@@ -150,11 +150,7 @@ $stdid=$row['id'];
                          
   <td class=" " style="text-align:center;">
 
-                           <div class="input-box fullname">
-
-
-
-
+   <div class="input-box fullname">
 
 
 <input type="text"  name="marks[]" value="<?php echo $marks; ?>"  style="width:50%;text-align:center;">             

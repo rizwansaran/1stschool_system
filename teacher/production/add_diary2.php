@@ -60,7 +60,7 @@ $class= $row1['class'];
                       </select><br/><br/> </div>
 <div class="col-md-6 col-xs-12">
 <h2> Select the Section:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="section" style="width:100%;" >
+                        <select id="section" class="form-control" name="section" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
  $query11 = "SELECT DISTINCT section FROM `subject` WHERE `t_id`='$tid' ORDER BY section DESC";
@@ -92,7 +92,7 @@ $sec= 'Boys+Girls';
                       <div class="col-md-6 col-xs-12">
  <h2> Select a Due Date:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
                   <div class="form-group">
-                  <input class="form-control" type="date"  name ="date"  required/ style="width:100%;">
+                  <input class="form-control" type="date"  name ="date"  style="width:100%;">
                  </div> </div><br/> <br/>
 <div class="col-md-6 col-xs-12">
  <h2> Upload Diary Picture * :</h2><hr style="width:50%;margin-left:-1px;margin-top:-1px;">

@@ -45,7 +45,7 @@ if(!isset($_POST['submit'])){
 
                   <div class="form-group">
 
-                                   <h2> Select the class:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
+                      <h2> Select the class:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
                         <select id="class" class="form-control" name="class" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
@@ -62,7 +62,7 @@ $class= $row1['class'];
                      <?php }?>  
                       </select><br/>
  <h2> Select the Section:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="section" style="width:100%;" >
+                        <select id="section" class="form-control" name="section" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
  $query11 = "SELECT DISTINCT section FROM `subject` WHERE `t_id`='$tid' ORDER BY section DESC";
@@ -91,7 +91,7 @@ $sec= 'Boys+Girls';
  
                       </select><br/>
 <h2> Select the Session:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="year" style="width:100%;" >
+                        <select id="year" class="form-control" name="year" style="width:100%;" >
 <?php
 $tid= $_SESSION['id'];
  $query11 = "SELECT DISTINCT batch FROM `student` ORDER BY batch DESC";
@@ -140,11 +140,6 @@ if(isset($_POST['submit'])){
 <input  class="form-control" type="hidden" required="" name ="section" value="<?php echo $section; ?>" style="width:50%;">
 <input  class="form-control" type="hidden" required="" name ="year" value="<?php echo $year; ?>" style="width:50%;">
 
-
-
-
-
-
                   <div class="form-group">
 
                   <h2> Select the Week of the Month:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
@@ -155,13 +150,13 @@ if(isset($_POST['submit'])){
                         <option value="1">1st Week</option>
                         <option value="2">2nd Week</option>
                         <option value="3">3rd Week</option>
- <option value="4">3rd Week</option>
+                        <option value="4">4th Week</option>
            
                   </select>
 
   <h2> Select Test Month:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
 
-                  <select id="term" class="form-control" name="month" style="width:100%;" >
+                  <select id="month" class="form-control" name="month" style="width:100%;" >
 <option value="" disabled>--Select--</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
@@ -184,7 +179,7 @@ if(isset($_POST['submit'])){
 
 <br/>
                  <h2> Select the Subject:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
-                        <select id="class" class="form-control" name="subject" style="width:100%;" >
+                        <select id="subject" class="form-control" name="subject" style="width:100%;" >
 
 <?php
 $tid= $_SESSION['id'];

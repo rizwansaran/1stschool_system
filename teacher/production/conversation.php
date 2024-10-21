@@ -31,8 +31,8 @@ $student = mysqli_fetch_assoc(mysqli_query($link, $sql));
     <?php include 'php/head.php.inc'; ?>
 <script type="text/javascript"
     src="js/refresh.js"></script>
-<script type="text/javascript"
-    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<!-- <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.10.1.min.js"></script> -->
 <script>
     $(document).ready(
             function() {
@@ -111,7 +111,7 @@ $time1=date("H:i:s d-m-Y", strtotime($time));
                            <td class=" " style="text-align:right;">                        
 <form   method="post" action="">   
     <input type="hidden" name="rn" id="input" value="<?php echo $row['id']; ?> "  placeholder=''  class="required" >
-		<input type="submit" name="sub" id="input" value="DELETE" style="float:;" >
+		<button type="submit" name="sub"  value="DELETE" class="btn btn-primary fa fa-trash" style="float:right; border:0px;" ></button>
 	</form>  </td>
                           </tr>
                             <?php
@@ -126,7 +126,7 @@ $time1=date("H:i:s d-m-Y", strtotime($time));
 
 <form   method="post" action="">   
     <input type="hidden" name="rn" id="input" value="<?php echo $row['id']; ?> "  placeholder='    '  class="required" >
-		<input type="submit" name="sub" id="input" value="DELETE" style="float:;" >
+		<button type="submit" name="sub"  value="DELETE"  class="btn btn-primary  fa fa-trash" style="float:right; border:0px;" ></button>
 	</form> </td>
                           </tr>
                             <?php
@@ -169,18 +169,21 @@ $b="DELETE FROM message where id='$rn'";
                   
 <form action="" method="post">
                   
- 
-                <div class="form-group">
-                  <textarea name="msg" style="width:60%;" rows="4" placeholder='Type here'></textarea></div>
+<div class="row">
+<div class="col-md-8">
 
+                <div class="form-group">
+                  <textarea name="msg" style="width:100%;" rows="4" placeholder='Type here'></textarea>
+                </div>
+
+                  
                   </div>
                   
-               
-               <div class="col-md-2">
-                   <div class="row">
-                                   <button type="submit" name="submit"  class="form-control btn btn-primary">Reply</button>
+               <div class="col-md-4">
+                 <button type="submit" name="submit" style="float:right; width:50%; margin-top:30px;"  class="form-control btn btn-primary">Reply</button>
                                     
 </div>
+                      </div>
  <?php if(isset($_POST['submit'])){
                       ?>
                       <br>

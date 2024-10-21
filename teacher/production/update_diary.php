@@ -55,7 +55,7 @@ if(!isLoggedIn()){
 <br><br>
                   <h2> Select a Due Date:</h2><hr style="width:20%;margin-left:-1px;margin-top:-1px;">
                   <div class="form-group">
-                  <input class="form-control" type="date"  name ="date" required/  style="width:50%;">
+                  <input class="form-control" type="date"  name ="date" value="<?php echo $row['d_date']?>"   style="width:50%;" required>
                   </div><br/>
 
 

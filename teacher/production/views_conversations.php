@@ -69,7 +69,6 @@ require 'php/config.php';
                         {
 
                           $stdid = $row['studentid'];
-
                           $sql = "SELECT * FROM `student` WHERE `id`= '$stdid' AND `status`='Active'";
                           $res = mysqli_query($link, $sql);
                           $student = mysqli_fetch_assoc($res);
