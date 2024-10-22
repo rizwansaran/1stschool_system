@@ -212,10 +212,13 @@ if (isset($_POST['collect_fee'])) {
                                   while($row1 = mysqli_fetch_array($result1)) {
                                       $fee_month = $row1['feemonth'];
                                       $fee_year = $row1['year'];
+                                      $current_year = date('Y');
+                                      $current_month = date('n');
                                       // Convert numeric month to month name
                                       $monthName = date('F', mktime(0, 0, 0, $fee_month, 10)); 
                                   ?>
-                                      <option value="<?php echo $fee_month . '-' . $fee_year; ?>"><?php echo $monthName; ?> - <?php echo $fee_year; ?></option>
+                                      <option value="<?php echo $fee_month . '-' . $fee_year; ?>"
+                                      <?php if($current_year == $fee_year && $current_month ==$fee_month){?> selected <?php }?> ><?php echo $monthName; ?> - <?php echo $fee_year; ?></option>
                                   <?php 
                                   }
                                   ?>

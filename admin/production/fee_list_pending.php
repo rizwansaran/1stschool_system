@@ -7,7 +7,7 @@ if(!isLoggedIn()){
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>All classes!</title>
+    <title>Pending Fee List!</title>
     <?php include 'php/head.php.inc'; ?>
   </head>
   <body class="nav-md">
@@ -38,86 +38,32 @@ if(!isLoggedIn()){
                                     </select><br/><br/>
                                 </div>
                             <div class="col-md-3">
-                                    <select id="class" class="form-control" name="section" style="width:100%;" >
-                                        <option value="">--Not Select--</option>
+                                    <select id="section" class="form-control" name="section" style="width:100%;" >
+                                        <option value="all">All Sections</option>
                                         <option value="M">Boys</option>
                                         <option value="F">Girls</option>
                                         <option value="M+F">Both</option>
                                     </select><br/><br/>
                                 </div>
                             <div class="col-md-3">
-                                <select id="class" class="form-control" name="monthyear" style="width:100%;" >
-                                <?php 
-                                    $query2 = "SELECT * FROM `financial_year`WHERE `status`='active' ";
-                                        $result2 = mysqli_query($link, $query2);
-                                        if(mysqli_num_rows($result2) > 0){
-                                            $fe = mysqli_fetch_array($result2);
-                                            $start_date= $fe['year_start_date'];
-                                            $end_date= $fe['year_end_date'];
-                                            $installments= $fe['installments'];
-                                    if($installments=='12'){  
-                                            $start_month=date('n',strtotime("$start_date"));
-                                            $start_year=date('Y',strtotime("$start_date"));
-                                            
-                                            for($i=1;$i<=$installments;$i++) {
-                                            if($i==1){
-                                                $month_number1=$start_month;
-                                            }
-                                            else {
-                                                $month_number1=$start_month + $i - 1;
-                                            }
-                                            if($month_number1<=12){
-                                                $month_number=$month_number1;
-                                                $year=$start_year;
-                                            }
-                                            if($month_number1>12){
-                                                $month_number=$month_number1-12;
-                                                $year=$start_year+1;
-                                             }
-                                            
-                                            if($month_number=='1'){
-                                                $month="January";
-                                            }
-                                            else if($month_number=='2'){
-                                                $month="February";
-                                            }
-                                            else if($month_number=='3'){
-                                                $month="March";
-                                            }
-                                            else if($month_number=='4'){
-                                                $month="April";
-                                            }
-                                            else if($month_number=='5'){
-                                                $month="May";
-                                            }
-                                            else if($month_number=='6'){
-                                                $month="June";
-                                            }
-                                            else if($month_number=='7'){
-                                                $month="July";
-                                            }
-                                            else if($month_number=='8'){
-                                                $month="August";
-                                            }
-                                            else if($month_number=='9'){
-                                                $month="September";
-                                            }
-                                            else if($month_number=='10'){
-                                                $month="October";
-                                            }
-                                            else if($month_number=='11'){
-                                                $month="November";
-                                            }
-                                            else if($month_number=='12'){
-                                                $month="December";
-                                            }
-                                        
-                                    ?>
-                                        <option value="<?php echo $month_number;?>-<?php echo $year;?>"><?php echo $month;?>-<?php echo $year;?></option>
-                                     <?php
-                                    }
-                                 }  }
-                                     ?>
+                                <select id="monthyear2" class="form-control" name="monthyear" style="width:100%;" >
+                                <?php
+                                  $query1 = "SELECT DISTINCT feemonth, year FROM `chalan` ORDER BY id ASC";
+                                  $result1 = mysqli_query($link, $query1);
+                                
+                                  while($row1 = mysqli_fetch_array($result1)) {
+                                      $fee_month = $row1['feemonth'];
+                                      $fee_year = $row1['year'];
+                                      $current_year = date('Y');
+                                      $current_month = date('n');
+                                      // Convert numeric month to month name
+                                      $monthName = date('F', mktime(0, 0, 0, $fee_month, 10)); 
+                                  ?>
+                                      <option value="<?php echo $fee_month . '-' . $fee_year; ?>"
+                                      <?php if($current_year == $fee_year && $current_month ==$fee_month){?> selected <?php }?> ><?php echo $monthName; ?> - <?php echo $fee_year; ?></option>
+                                  <?php 
+                                  }
+                                  ?>
                                 </select><br/><br/>
                             </div>
                             <div class="col-md-2">
@@ -143,6 +89,7 @@ if(!isLoggedIn()){
                         $dateParts = explode('-', $monthyear);
                         $_month = $dateParts[0];
                         $_year = $dateParts[1];
+                        $month_name = date('F', mktime(0, 0, 0, $_month, 10)); 
                         if($section=='M+F')
                         {
                         $section1="Boy + Girls";
@@ -165,9 +112,23 @@ if(!isLoggedIn()){
                         //                         $row1 = mysqli_num_rows($result1);
 
                         ?>
+
+                        <?php 
+
+                        $query1 = "SELECT * FROM `insti_name` ";
+                                            $result1 = mysqli_query($link, $query1);
+                                            
+                                            $row = mysqli_fetch_array($result1);
+                        $name= $row['full_name'];
+                        $image= $row['logo'];
+                        ?>
+
+                        
+                  <h2 style="text-align:center; text-transform: uppercase; font-family: "Times New Roman", Times, serif;"> <img src=" <?php echo $image;?>" class="" width='60' height='50'><b> <?php echo $name;?> </h2><br/> 
+                        
                        
                     <h3 style="color:Black; text-align:center; border: 0px solid black;"> <?php echo  $class1; ?> - <?php echo  $section1; ?></h3>
-                    <h2 style="color:Black; text-align:center; border: 0px solid black;" >Pending Fee List</h2>
+                    <h2 style="color:Black; text-align:center; border: 0px solid black;" >Pending Fee List for <?php echo $month_name."-".$_year ?> </h2>
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" > 
                            <button style="float:right;" class="noprint btn btn-primary" onClick="window.print()"><i class="fa fa-print"> </i> Print</button> 
                         </div>
