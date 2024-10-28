@@ -135,13 +135,14 @@ if ($now > $_SESSION['expire']) {
 </ul>
 </li>
 <li><a><i class="fa fa-calendar-check-o"></i>Student/Staff Attendance <span class="fa fa-chevron-down"></span></a>
-<ul class="nav child_menu">
-<li><a href="add_attendance_std.php">Add Student Attendance</a></li>
-<li><a href="add_attendance.php">Add Staff Attendance</a></li>
-<li><a href="edit_attendance.php">Edit Staff  Attendance</a></li>
-<li><a href="views_attendance.php">View Staff  Attendance</a></li>
-<li><a href="views_attendance_monthly.php">Monthly Staff  Attendance</a></li>
-</ul>
+  <ul class="nav child_menu">
+    <li><a href="add_attendance_std.php">Add Student Attendance</a></li>
+    <li><a href="views_attendance_std.php">View Student Attendance</a></li>
+    <li><a href="add_attendance.php">Add Staff Attendance</a></li>
+    <li><a href="edit_attendance.php">Edit Staff  Attendance</a></li>
+    <li><a href="views_attendance.php">View Staff  Attendance</a></li>
+    <li><a href="views_attendance_monthly.php">Monthly Staff  Attendance</a></li>
+  </ul>
 </li>
 <li><a><i class="fa fa-columns"></i> Result <span class="fa fa-chevron-down"></span></a>
 <ul class="nav child_menu">

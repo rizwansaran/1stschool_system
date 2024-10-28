@@ -23,7 +23,7 @@ if(!isLoggedIn()){
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add Attendance </h3>
+                <h3>View Student Attendance </h3>
                 <h2 style="color:red"><?php error_reporting(0); echo $_GET['msg']; ?></h2>
               </div>
             </div>
@@ -34,9 +34,9 @@ if(!isLoggedIn()){
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
 
-                  <div class="x_content">
-
-                    <form action="action_attendance_std.php" method="post">
+                  <div class="x_content">    
+                  <form action="view_attendance_std.php" method="post">
+                 
                   <div class="col-md-12">
                     <div class="row">
 
@@ -68,20 +68,21 @@ $class= $row1['class'];
                         <option value="M">Boys</option>
                       <option value="F">Girls</option>
   <option value="M+F">Both</option>
-                      </select><br/>
+                      </select>
  </div>
                    
  <div class="col-md-3 col-xs-12">
                   <h2> Select a Date:</h2>
                   <input placeholder="Select Date" class="form-control" type="date" required="" name ="date" value ="<?php echo date("Y-m-d", strtotime("+5 hours"));?>" style="width:100%;">
-                  </div><br/><br/>
+                  </div>
  
-                               <div class="col-md-3 col-xs-12">          
-                                 <div class="form-group">  
-                       <button type="submit" class="form-control btn btn-primary" style="width:50%;">Select</button> <div><div>
-                       </form>
+                  <div class="form-group"> <div class="col-md-2 col-xs-12" style="margin-top:40px;">    
+                       <button type="submit" class="form-control btn btn-primary" style="width:80%;">Select</button>
+                  </div>    
+</div>
+ </form>
 
-                       
+                       <div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
                   </div>
                   

@@ -1,5 +1,4 @@
-
-                  <?php
+<?php
 require 'php/config.php';
 if(!isLoggedIn()){
   header('location:login.php');
@@ -8,7 +7,7 @@ if(!isLoggedIn()){
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SubjectWise Diary</title>
+    <title>View Staff Attendance</title>
     <?php include 'php/head.php.inc'; ?>
   </head>
 
@@ -24,7 +23,7 @@ if(!isLoggedIn()){
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add Attendance </h3>
+                <h3>View Staff Attendance </h3>
                 <h2 style="color:red"><?php error_reporting(0); echo $_GET['msg']; ?></h2>
               </div>
             </div>
@@ -46,7 +45,7 @@ if(!isLoggedIn()){
                 
                   <div class="form-group">
                   <label>Select a Date: *:</label>  
-                  <input placeholder="Select Date" class="form-control" type="date" required="" name ="date" value ="<?php echo date("d-m-Y");?>" style="width:80%;">
+                  <input placeholder="Select Date" class="form-control" type="date" required="" name ="date" value ="<?php echo date("Y-m-d");?>" style="width:80%;">
                   </div>
 </div>
                                        <div class="form-group"> <div class="col-md-6 col-xs-12">  <br/>    

@@ -179,21 +179,22 @@ $status1="Active";
           <td>      
 
 <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                
-        Select Action to be Performed
-   <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-  <li><a href="action_active.php?sid=<?php echo $row['id'];?>&status=<?php echo $status;?>"><button type="submit" class="form-control btn btn-primary">Make <?php echo $status1;?></button></a></li>													
- <li><a href="fee_structure2.php?std_id=<?php echo $row['id'];?>&std_name=<?php echo $row['fullname'];?>&class=<?php echo $row['class'];?>"><button type="button" class="form-control btn btn-primary">Update Fee Structure  </button></a></li>													
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+   Select Action to be Performed
+  <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+  
+<li><a href="fee_collect.php?id=<?php echo $row['id'];?>"><button type="button" class="form-control btn btn-primary">Receive Fee</button></a></li>
+
+ <li><a href="action_active.php?sid=<?php echo $row['id'];?>&status=<?php echo $status;?>"><button type="submit" class="form-control btn btn-primary">Make <?php echo $status1;?></button></a></li>													
+ 
+  <li><a href="fee_structure2.php?std_id=<?php echo $row['id'];?>&std_name=<?php echo $row['fullname'];?>&class=<?php echo $row['class'];?>"><button type="button" class="form-control btn btn-primary">Update Fee Structure  </button></a></li>													
                                                  
 <li><a href="updatestudent2.php?sid=<?php echo $row['id'];?>"><button type="button" class="form-control btn btn-primary">Update Student  </button></a></li>													
 <!--li><a href="student_academics.php?id=<?php /* echo $row['id']; */?>"><button type="button" class="form-control btn btn-primary">View Pre. Academic Record</button></a></li-->
 
 <li><a href="student_doc.php?id=<?php echo $row['id'];?>"><button type="button" class="form-control btn btn-primary">View Documents</button></a></li>
-
-<li><a href="fee_collect.php?id=<?php echo $row['id'];?>"><button type="button" class="form-control btn btn-primary">Receive Fee</button></a></li>
 
 
 <?php
