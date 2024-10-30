@@ -245,7 +245,7 @@ $batch= $row['batch'];
 $class= $row['class'];
                          //$batch = date("Y");
 				//$batch = $student['batch'];
-                          $query9 = "SELECT * FROM `result` WHERE `studentid`= '$id' AND `class`= '$class' AND `term`= '$term' AND `year`= '$batch' ";
+                          $query9 = "SELECT * FROM `result` WHERE `studentid`= '$id' AND `class`= '$class' AND `term`= '$term' AND `year`= '$batch' ORDER BY `subject` ASC";
                           $result14 = mysqli_query($link, $query9);
             
 

@@ -227,7 +227,7 @@ $class = $row['class'];
 $term = $_POST['term'];
 $batch = date("Y");
 
- $query1 = "SELECT * FROM `result` WHERE `studentid`= '$student' AND `class`= '$class' AND `term`= '$term' AND `year`= '$year' ";
+ $query1 = "SELECT * FROM `result` WHERE `studentid`= '$student' AND `class`= '$class' AND `term`= '$term' AND `year`= '$year'   ORDER BY `subject` ASC";
                                         $result2 = mysqli_query($link, $query1);
              
 

@@ -252,7 +252,7 @@ $sec= 'Female';
 $class = $_POST['class'];
 $batch = $_POST['batch'];
  $month =$_POST['month'];
-$query23 = "SELECT DISTINCT `subject` FROM `result1` WHERE `class`= '$class' AND `month`='$month' AND `year`='$batch'";
+$query23 = "SELECT DISTINCT `subject` FROM `result1` WHERE `class`= '$class' AND `month`='$month' AND `year`='$batch' ORDER BY `subject` ASC";
                           $result23 = mysqli_query($link, $query23);
  $totalmark=0;
  $mark=0;

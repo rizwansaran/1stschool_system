@@ -211,7 +211,7 @@ $id = $_GET['sid'];
 $class = $row['class'];
 
  $batch = $row['batch'];
-$query23 = "SELECT DISTINCT `subject` FROM `result` WHERE `class`= '$class' AND `year`='$batch' ";
+$query23 = "SELECT DISTINCT `subject` FROM `result` WHERE `class`= '$class' AND `year`='$batch' ORDER BY `subject` ASC";
                           $result23 = mysqli_query($link, $query23);
  $totalmark=0;
  $mark=0;

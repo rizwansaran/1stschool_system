@@ -209,7 +209,7 @@ $id = $_POST['id'];
 $class = $row['class'];
 
 
-$query23 = "SELECT DISTINCT `subject` FROM `result` WHERE `class`= '$class' ";
+$query23 = "SELECT DISTINCT `subject` FROM `result` WHERE `class`= '$class'  ORDER BY `subject` ASC ";
                           $result23 = mysqli_query($link, $query23);
  $totalmark=0;
  $mark=0;

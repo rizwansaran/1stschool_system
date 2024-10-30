@@ -192,8 +192,11 @@ $sec= 'Female';
 
 $class = $_POST['class'];
  $year = $_POST['year'];
-$query23 = "SELECT DISTINCT `subject` FROM `result` WHERE `class`= '$class' AND `year`='$year' ";
-                          $result23 = mysqli_query($link, $query23);
+ $query23 = "SELECT DISTINCT TRIM(`subject`) AS `subject`
+ FROM `result` 
+ WHERE `class` = '$class' AND `year` = '$year' 
+ ORDER BY `subject` ASC";
+ $result23 = mysqli_query($link, $query23);
  $totalmark=0;
  $mark=0;
             while($sub = mysqli_fetch_array($result23)){ ?>
