@@ -38,5 +38,6 @@
       });
     </script>
   
+  <?php include 'script.php'; ?>
 
  

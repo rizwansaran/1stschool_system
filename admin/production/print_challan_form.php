@@ -463,7 +463,7 @@ $image= $row['logo'];
                        
          </tbody>
                       </table>
-  <table id="example" class="table table-striped jambo_table bulk_action">
+  <table  class="table table-striped jambo_table ">
              
                         <thead>   
 <tr class="headings"> 
@@ -854,14 +854,35 @@ $count++; }   ?>
 
  <tr class=""> 
 
-<td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><b><?php echo "Total Due Amount:";   ?></b></td>
+<td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><b><?php echo "Total Due Amount Before Due Date:";   ?></b></td>
 
 <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><?php  echo $total;  ?></td>
     
      
  </tr>
+
+ 
  </tbody>
-                      </table>
+</table>
+<br>
+<table class= "" width='100%'>
+		        
+    <tbody>
+        <tr class=""> 
+            <td class=" " style="text-align:center; color:black; border: 3px solid #dddddd;" colspan="2"><b><?php echo "Fee Slab";   ?></b></td>
+        </tr>
+        <tr class=""> 
+            <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><b><?php echo "Amount for period (".date('11-M')." to ". date('20-M').")";   ?></b></td>
+            <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><?php if($total > 0) echo $total+100; else echo 0;  ?></td>  
+        </tr>
+        <tr class=""> 
+            <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><b><?php echo "Amount for period (".date('21-M')." to ". date('t-M').")";   ?></b></td>
+            <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><?php if($total > 0)  echo $total+200;  else echo 0; ?></td>  
+        </tr>
+
+ 
+    </tbody>
+ </table>
 
 <table class= "" width='100%'>
 		        
@@ -953,7 +974,7 @@ $image= $row['logo'];
                        
          </tbody>
                       </table>
-   <table id="example" class="table table-striped jambo_table bulk_action">
+   <table  class="table table-striped jambo_table ">
              
                         <thead>   
 <tr class="headings"> 
@@ -1360,14 +1381,34 @@ $count++; }   ?>
 
  <tr class=""> 
 
-<td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><b><?php echo "Total Due Amount:";   ?></b></td>
+<td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><b><?php echo "Total Due Amount Before Due Date:";   ?></b></td>
 
 <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><?php  echo $total;  ?></td>
     
      
  </tr>
  </tbody>
-                      </table>
+</table>
+
+<br>
+<table class= "" width='100%'>
+		        
+    <tbody>
+        <tr class=""> 
+            <td class=" " style="text-align:center; color:black; border: 3px solid #dddddd;" colspan="2"><b><?php echo "Fee Slab";   ?></b></td>
+        </tr>
+        <tr class=""> 
+            <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><b><?php echo "Amount for period (".date('11-M')." to ". date('20-M').")";   ?></b></td>
+            <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><?php if($total > 0) echo $total+100; else echo 0;  ?></td>  
+        </tr>
+        <tr class=""> 
+            <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><b><?php echo "Amount for period (".date('21-M')." to ". date('t-M').")";   ?></b></td>
+            <td class=" " style="text-align:center; color:red; border: 3px solid #dddddd;"><?php if($total > 0)  echo $total+200;  else echo 0; ?></td>  
+        </tr>
+
+ 
+    </tbody>
+ </table>
 
 <table class= "" width='100%'>
 		        

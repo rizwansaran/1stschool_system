@@ -74,25 +74,14 @@ $term = $_POST['term'];
                           <h2><?php echo $class?>  <?php echo $subject?> </h2><hr>
  <h2> Total Marks:</h2><hr style="width:40%;margin-left:-1px;margin-top:-1px;">
                         <select id="class" class="form-control" name="total" style="width:40%;" >
-  <option value="10">10</option> 
-<option value="15">15</option>  
-<option value="20">20</option> 
- <option value="25">25</option>  
-<option value="30">30</option> 
- <option value="35">35</option> 
-<option value="40">40</option>
- <option value="45">45</option> 
-  <option value="50">50</option>
- <option value="55">55</option> 
-   <option value="60">60</option>
- <option value="65">65</option> 
- <option value="70">70</option> 
-			  <option value="75">75</option>
- <option value="80">80</option> 
-                        <option value="85"> 85</option>
- <option value="90">90</option> 
- <option value="95">95</option> 
-                    <option value="100">100</option>
+                        <?php
+                        $query_total = "SELECT DISTINCT `total` FROM `result1` WHERE `class`='$class' AND `subject`='$subject' AND `term`='$term' AND `t_id`='$teacher' AND `section`='$section' AND `month`='$month' AND `year`='$year' ORDER BY id ASC ";
+                          $result_total = mysqli_query($link, $query_total);
+                          $row_total = mysqli_fetch_array($result_total);
+                          
+                          for($i=10; $i<=100; $i+=5 ){ ?>
+                            <option <?php if($row_total['total']== $i) {?> selected <?php } ?> value="<?php echo $i;?>"><?php echo $i;?></option> 
+                         <?php } ?>
                       </select><br/>
  <br/>
  

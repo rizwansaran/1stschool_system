@@ -111,11 +111,11 @@ $selected = 1;
                      
                       <label for="fathername">Father Name * :</label>
                       <input type="text" id="fathername" class="form-control"  name="fathername" value="<?php echo $fathername; ?>" required />
-  <br>
+                      <br>
                       <label for="mothername">Father CNIC No. * :</label>
                       <input type="text" id="mothername" class="form-control"  name="fcnic" data-parsley-trigger="change" value="<?php echo $mothername; ?>" required />
-  <br> 
-<label for="mobile">Mobile No. * :</label>
+                        <br> 
+                      <label for="mobile">Mobile No. * :</label>
                       <input type="number" id="mobile" class="form-control"  name="mobile" data-parsley-trigger="change" required />  <br>
 
                        <input type="hidden" id="login" value="parent-<?php echo $student; ?>" class="form-control" name="login"  required />   <br>

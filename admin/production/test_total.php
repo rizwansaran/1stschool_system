@@ -318,7 +318,7 @@ $queryatd21 = "SELECT * FROM `atd` WHERE `std_id`='$id' AND `status`='0' AND `mo
 if(mysqli_num_rows($resultatd21) > 0) {
                         $studentatd21 = mysqli_num_rows($resultatd21);
                           
- $fine= $studentatd21 * 50 ;
+ $fine= $studentatd21 * 0 ;
 
 
  
@@ -389,25 +389,31 @@ $total=$total+$total1;
 
 </tr>
 
-<tr class="">    
-                       
-<td class=" column-title col-md-2 col-lg-2 col-sm-2 col-sm-2 col-xs-2" style="text-align:center; border: 0px solid #dddddd;"> 
-    <input type="date"  name="date"  value="<?php echo date('Y-m-d'); ?>"     class="form-control" required /> </td>
+<tr class="">
+    <!-- Date Field -->
+    <td class="column-title col-md-2 col-lg-2 col-sm-2 col-xs-2" style="text-align:center; border: 0px solid #dddddd;">
+        <input type="date" name="date" id="dateField" value="<?php echo date('Y-m-d'); ?>" class="form-control" required />
+    </td>
 
+    <!-- Total Amount Display -->
+    <td class="column-title col-md-4 col-lg-4 col-sm-4 col-xs-4" style="text-align:center; border: 0px solid #dddddd;">
+        <input type="text" name="" id="displayTotal" value="<?php echo $total; ?>" class="form-control" disabled />
+        <input type="hidden" name="tamount" id="hiddenTotal" value="<?php echo $total; ?>" class="form-control">
+    </td>
 
-<td class=" column-title col-md-4 col-lg-4 col-sm-4 col-sm-4 col-xs-4" style="text-align:center; border: 0px solid #dddddd;">  
-<input type="text"  name="" id="" value="<?php echo $total; ?>"     class="form-control" disabled  />
+    <!-- Paid Amount Field -->
+    <td class="column-title col-md-4 col-lg-4 col-sm-4 col-xs-4" style="text-align:center; border: 0px solid #dddddd;">
+        <input type="number" name="amount" id="num2" max="<?php echo $total; ?>" value="<?php echo $total; ?>" min="0" placeholder="Paid Amount:" class="form-control" required />
+    </td>
 
-<input type="hidden"  name="tamount" id="num1" value="<?php echo $total; ?>"     class="form-control">  </td>
-<td class="column-title col-md-4 col-lg-4 col-sm-4 col-sm-4 col-xs-4"style="text-align:center; border: 0px solid #dddddd;">  
-    <input type="number"  name="amount" id="num2" max="<?php echo $total; ?>" value="<?php echo $total; ?>" min="0" placeholder="Paid Amount:"      class="form-control" required/></td>
- <td class="column-title col-md-4 col-lg-4 col-sm-4 col-sm-4 col-xs-4" style="text-align:center; border: 0px solid #dddddd;"> <p id='answer'>  Balance: <?php echo $total; ?> </p> </td>
-
-
-                        
-                       
-
+    <!-- Balance Display -->
+    <td class="column-title col-md-4 col-lg-4 col-sm-4 col-xs-4" style="text-align:center; border: 0px solid #dddddd;">
+        <p id='answer'>Balance: <?php echo $total; ?></p>
+    </td>
 </tr>
+
+
+
 <tr class="">  
 <td class=" column-title col-md-2 col-lg-2 col-sm-2 col-sm-2 col-xs-2" style="text-align:center; border: 0px solid #dddddd;"> <hr> </td>
 <td class=" column-title col-md-2 col-lg-2 col-sm-2 col-sm-2 col-xs-2" style="text-align:center; border: 0px solid #dddddd;"> <hr> </td>
@@ -429,8 +435,6 @@ $total=$total+$total1;
 </td>
 </tr>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<
-
 <script>
  
    
@@ -469,14 +473,39 @@ $total=$total+$total1;
             }); 
 
         });
-   
-   
-
-
 
 </script>
 
+<!-- jQuery Script -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<script>
+$(document).ready(function () {
+    $('#dateField').trigger('change');
+    $('#dateField').on('change', function () {
+        const dateValue = $(this).val(); // Get selected date
+        const date = new Date(dateValue);
+        const day = date.getDate(); // Extract the day of the month
+        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(); // Calculate the last day of the month
+        
+        // Get the current total from the hidden input
+        let total = parseFloat($('#hiddenTotal').val());
 
+        // Perform the condition check
+        if (total > 0) {
+            if (day >= 11 && day <= 20) {
+                total += 100;
+            } else if (day >= 21 && day <= lastDay) {
+                total += 200;
+            }
+        }
+
+        // Update the total fields
+        $('#hiddenTotal').val(total.toFixed(2)); // Update hidden field
+        $('#displayTotal').val(total.toFixed(2)); // Update display field
+        $('#answer').text(`Balance: ${total.toFixed(2)}`); // Update balance
+    });
+});
+</script>
 
 
 

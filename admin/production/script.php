@@ -6,7 +6,7 @@
 		
 
 <div class="cd-overlay"></div>
-      <script src="../assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+      <!-- <script src="../assets/plugins/jquery/jquery-2.1.4.min.js"></script> -->
         <script src="../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
         <script src="../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <script src="../assets/plugins/switchery/switchery.min.js"></script>

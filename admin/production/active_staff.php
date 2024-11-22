@@ -78,17 +78,15 @@ function myFunction()
                       <table id="example" class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
- <th class="column-title">Sr.# </th>
- <th class="column-title">ID </th>
- <th class="column-title">Name </th>
-                           
-
+                            <th class="column-title">Sr.# </th>
+                            <th class="column-title">ID </th>
+                            <th class="column-title">Name </th>
                             <th class="column-title">Gender </th>
                             <th class="column-title">Number </th>
                             <th class="column-title">Address </th>
                             <th class="column-title">Class - Section </th>
                             <th class="column-title">Qualification </th>
-<th class="column-title" style="text-align:center; border: 1px solid #dddddd;">Take Action </th>
+                            <th class="column-title" style="text-align:center; border: 1px solid #dddddd;">Take Action </th>
 
                            
                           </tr>
@@ -98,15 +96,13 @@ function myFunction()
                         <?php
                         $query = "SELECT * FROM `staff` Where `status`='Active'";
                         $result = mysqli_query($link, $query);
-$c=1;
+                        $c=1;
                         while($row = mysqli_fetch_array($result)){
                         ?>
                           <tr class="even pointer">
-<td class=" "><?php echo $c; ?></td>
-<td class=" "><?php echo $row['id']; ?></td>
- <td class=" "><?php echo $row['fullname']; ?></td>
-                           
-
+                            <td class=" "><?php echo $c; ?></td>
+                            <td class=" "><?php echo $row['id']; ?></td>
+                            <td class=" "><?php echo $row['fullname']; ?></td>
                             <td class=" "><?php echo $row['gender']; ?> </td>
                             <td class=" "><?php echo $row['mobile']; ?></td>
                             <td class=" "><?php echo $row['address']; ?></td>

@@ -156,22 +156,19 @@ if(isset($_POST['submit'])){
 
   <h2> Select Test Month:</h2><hr style="width:100%;margin-left:-1px;margin-top:-1px;">
 
-                  <select id="month" class="form-control" name="month" style="width:100%;" >
-<option value="" disabled>--Select--</option>
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
- <option value="4">April</option>
- <option value="5">May</option>
- <option value="6">June</option>
- <option value="7">July</option>
- <option value="8">August</option>
- <option value="9">September</option>
- <option value="10">Octuber</option>
- <option value="11">November</option>
- <option value="12">December</option>
+              <select id="month" class="form-control" name="month" style="width:100%;" >
+                  <option value="" disabled>--Select--</option>
+                  <?php
+                  for ($i = 1; $i <= 12; $i++) {
+                      $monthName = date("F", mktime(0, 0, 0, $i, 1));
+                      $current_month = date('m');
+                  ?>
+                      <option value="<?php echo $i; ?>" <?php if( $current_month == $i){ ?> selected <?php }  ?> ><?php echo $monthName; ?></option>";
+                  <?php 
+                  }
+                  ?>
            
-                  </select>
+              </select>
 
 
 

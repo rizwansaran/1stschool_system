@@ -121,7 +121,7 @@ $_SESSION["std_id"]=$id;
 <div class="row">
 <div class="col-md-3 col-lg-3 col-sm-4 col-sm-4 col-xs-4">
 
-  <table id="example" class="table table-striped jambo_table bulk_action">
+  <table  class="table table-striped jambo_table ">
              
                         <thead>   
 <tr class="headings"> 
@@ -135,7 +135,7 @@ $_SESSION["std_id"]=$id;
 
 <div class="col-md-9 col-lg-9 col-sm-8 col-sm-8 col-xs-8">
 
-  <table id="example" class="table table-striped jambo_table bulk_action">
+  <table class="table table-striped jambo_table ">
              
                         <thead>   
 <tr class="headings"> 
@@ -155,7 +155,7 @@ $_SESSION["std_id"]=$id;
 <div class="row">
 <div class="col-md-3 col-lg-3 col-sm-4 col-sm-4 col-xs-4">
 
- <table class="table table-striped jambo_table bulk_action" >
+ <table class="table table-striped jambo_table " >
 
 <form method="post" name="form1">
 
